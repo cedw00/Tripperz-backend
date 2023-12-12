@@ -9,24 +9,22 @@ router.put('/create', async (req, res) => {
         res.json({ result: false, error: 'Missing or empty fields' });
         return;
     }
-    const foodList = req.body.favFood.split(' ');
-    const hobbiesList = req.body.hobbies.split(' ');
-    const favDestList = req.body.favDest.split(' ');
-    if ((foodList.length < 1 || hobbiesList.length < 1 || favDestList.length < 1)) {
+
+    if ((req.body.favFood.length < 1 || req.body.hobbies.length < 1 || req.body.favDest.length < 1)) {
         res.json({ result: false, error: 'At least one type of food and hobbies is required' });
         return;
     }
     
-    const { birthday, gender, country, token } = req.body;
+    const { birthday, gender, country, favFood, favDest, hobbies, token } = req.body;
     const user = await User.findOne({ token: token });
     if (user) {
         User.updateOne({ token: token }, {
             birthday: birthday,
             gender: gender,
             country: country,
-            favoriteDestinations: favDestList,
-            favoriteFoods: foodList,
-            hobbies: hobbiesList,
+            favoriteDestinations: favDest,
+            favoriteFoods: favFood,
+            hobbies: hobbies,
         }).then(updatedData => {
             if (updatedData.modifiedCount > 0) {
                 User.findOne({ token: token }).then(data => {

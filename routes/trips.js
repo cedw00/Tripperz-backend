@@ -8,7 +8,7 @@ const { checkBody } = require('../modules/checkBody');
 router.get('/:token', async (req, res) => {
     const user = await User.findOne({ token: req.params.token });
     if (user) {
-        Trip({ usersList: user_id }).then(data => {
+        Trip.find({ usersList: user._id }).then(data => {
             if (data.length > 0) {
                 res.json({ result: true, trips: data })
             } else {
@@ -25,13 +25,12 @@ router.post('/', async (req, res) => {
         res.json({ result: false, error: "Missing or empty fields" });
         return;
     }
-    const activities = req.body.activitiesList.split(', ');
-    if (activities.length < 1) {
+    if (req.body.activitiesList.length < 1) {
         res.json({ result: false, error: "Not enough activities in list" });
         return;
     }
 
-    const { token, start, end, countryDest, cityDest } = req.body;
+    const { token, start, end, countryDest, cityDest, activitiesList } = req.body;
     const user = await User.findOne({ token: token });
     if (user) {
         const users = [];
@@ -41,7 +40,7 @@ router.post('/', async (req, res) => {
             endDate: end,
             countryDest: countryDest,
             cityDest: cityDest,
-            activitiesList: activities,
+            activitiesList: activitiesList,
             usersList: users
         });
 
@@ -60,7 +59,7 @@ router.post('/', async (req, res) => {
 });
 
 router.put('/invite', async (req, res) => {
-    const users = req.body.users.split(' ');
+    const { users } = req.body;
     const trip = await Trip.findOne({ _id: req.body.id });
     if (trip) {
         const userIds = trip.usersList;
@@ -95,6 +94,6 @@ router.put('/invite', async (req, res) => {
     } else {
         res.json({ result: false, error: 'Trip not found' });
     }
-})
+});
 
 module.exports = router;
