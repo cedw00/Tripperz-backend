@@ -33,7 +33,7 @@ router.post('/register', async (req, res) => {
     });
 
     newUser.save().then(newDoc => {
-      res.json({ result: true, token: newDoc.token });
+      res.json({ result: true, user: newDoc });
     });
   } else {
     res.json({ result: false, error: 'email is already used' });
@@ -49,7 +49,7 @@ router.post('/signin', async (req, res) => {
   const { email, password } = req.body;
   const data = await User.findOne({ email: { $regex: new RegExp(email, 'i') } })
   if (data && bcrypt.compareSync(password, data.password)) {
-    res.json({ result: true, token: data.token });
+    res.json({ result: true, user: data});
   } else {
     res.json({ result: false, error: 'User not found or wrong password' });
   }
@@ -63,14 +63,5 @@ router.get('/', async (req, res) => {
     res.json({ result: false, error: 'No users saved in database' });
   }
 });
-
-router.get('/access/:token', async (req, res) => {
-  const user = await User.findOne({ token: req.params.token });
-  if (user) {
-    res.json({ result: true, user: user });
-  } else {
-    res.json({ result: false, error: 'Invalid token' })
-  }
-})
 
 module.exports = router;
