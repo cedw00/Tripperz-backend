@@ -4,7 +4,7 @@ var router = express.Router();
 const User = require('../models/users');
 const { checkBody } = require('../modules/checkBody');
 
-router.put('/create', async (req, res) => {
+router.put('/update', async (req, res) => {
     if (!checkBody(req.body, ['birthday', 'gender', 'country'])) {
         res.json({ result: false, error: 'Missing or empty fields' });
         return;
