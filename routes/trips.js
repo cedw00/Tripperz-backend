@@ -60,35 +60,27 @@ router.post('/', async (req, res) => {
 
 router.put('/invite', async (req, res) => {
     const { users } = req.body;
+    // const allUsers = users.split(' ');
     const trip = await Trip.findOne({ _id: req.body.id });
     if (trip) {
-        const userIds = trip.usersList;
-        for (const email of users) {
+        for (const email of allUsers) {
             User.findOne({ email: { $regex: new RegExp(email, 'i') } }).then(user => {
                 if (user) {
                     const trips = user.tripsList;
-                    userIds.push(user._id)
-                    Trip.updateOne({ _id: trip._id }, { usersList: userIds }).then(data => {
-                        if (data.modifiedCount > 0) {
-                            trips.push(trip._id);
-                            User.updateOne({ email: { $regex: new RegExp(email, 'i') } }, { tripsList: trips })
-                            .then(updatedUser => {
-                                if (updatedUser.modifiedCount < 1) {
-                                    res.json({ result: false, error: 'Failed to update user' });
-                                }
-                            })
-                        } else {
-                            res.json({ result: false, error: 'Failed to update trip' });
-                        }
-                    })
+                    const users = trip.usersList;
+                    users.push(user._id);
+                    trips.push(trip._id);
+                    Trip.updateOne({ _id: trip._id }, { usersList: users }).then();
+                    User.updateOne({ email: { $regex: new RegExp(email, 'i') } }, { tripsList: trips }).then();
                 } else {
-                    res.json({ result: false, error: 'Invited tripper not found' });
+                    res.json({ result: false, error: 'User not found' });
                 }
             })
+            User.findOne({ email: { $regex: new RegExp(email, 'i') } }).populate('tripsList').then();
         }
-        Trip.findOne({ _id: trip._id }).then(updatedTrip => {
+        Trip.findOne({ _id: trip._id }).populate('usersList').then(updatedTrip => {
             if (updatedTrip) {
-                res.json({ result: true, trip: updatedTrip });
+                res.json({ result: true, trip: updatedTrip,  });
             }
         });
     } else {

@@ -11,6 +11,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var tripsRouter = require('./routes/trips');
 var profileRouter = require('./routes/profile');
+var placesRouter = require('./routes/places');
 
 var app = express();
 
@@ -27,6 +28,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/profile', profileRouter);
 app.use('/trips', tripsRouter);
+app.use('/places', placesRouter);
 
 module.exports = app;
 
