@@ -12,6 +12,7 @@ const tripSchema = mongoose.Schema({
  endDate: String,
  countryDest: String,
  cityDest: String,
+ tripImage: String,
  activitiesList: [activitySchema],
  usersList: [{ type: mongoose.Schema.Types.ObjectId, ref: 'users' }],
 });
