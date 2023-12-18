@@ -25,10 +25,6 @@ router.post('/', async (req, res) => {
         res.json({ result: false, error: "Missing or empty fields" });
         return;
     }
-    if (req.body.activitiesList.length < 1) {
-        res.json({ result: false, error: "Not enough activities in list" });
-        return;
-    }
 
     const { token, start, end, countryDest, cityDest, img, activitiesList } = req.body;
     const user = await User.findOne({ token: token });
@@ -41,7 +37,7 @@ router.post('/', async (req, res) => {
             countryDest: countryDest,
             cityDest: cityDest,
             tripImage: img,
-            activitiesList: activitiesList,
+            activitiesList: [],
             usersList: users
         });
 
