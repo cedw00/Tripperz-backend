@@ -428,123 +428,314 @@ const popularCities = [
   { country: 'Australie', city: 'Lismore' },
 ];
 
+const citiesActivities = [
+  {
+    country: "France",
+    cities: [
+      {
+        name: "Paris",
+        activTypes: [
+          {
+            name: "Cultural Tourism",
+            activities: [
+              { name: "Museum", image: "http", api_name: ["museum"] },
+              { name: "Art Galleries", image: "http", api_name: ["art_gallery"] },
+              { name: "Historical sites and monuments", image: "http", api_name: ["tourist_attraction"] },
+              { name: "Iconic architecture", image: "http", api_name: ["point_of_interest", "tourist_attraction"] },
+            ],
+          },
+          {
+            name: "Guided Tours",
+            activities: [
+              { name: "Walking tours", image: "http", api_name: ['point_of_interest', "tourist_attraction"] },
+              { name: "Bus tours", image: "http", api_name: ["point_of_interest", "tourist_attraction"] },
+              { name: "Thematic tours", image: "http", api_name: ["point_of_interest", "tourist_attraction"] },
+            ],
+          },
+          {
+            name: "Culinary experiences",
+            activities: [
+              { name: "Local food tasting", image: "http", api_name: ["restaurant", "food"] },
+              { name: "Cooking classes", image: "http", api_name: ["cooking_school", 'food'] },
+              { name: "Wine tasting", image: "http", api_name: ["liquor_store", 'bar'] },
+            ],
+          },
+          {
+            name: "Entertainment",
+            activities: [
+              { name: "Amusement parks and theme parks", image: "http", api_name: ["amusement_park"] },
+              { name: "Shows and concerts", image: "http", api_name: ["movie_theater", 'event'] },
+              { name: "Theatre", image: "http", api_name: ["movie_theater", 'event'] },
+            ],
+          },
+        ],
+      },
+      {
+        name: "Calenzana",
+        activTypes: [
+          {
+            name: "Outdoor activities",
+            activities: [
+              { name: "Trekking", image: "http", api_name: ["point_of_interest", "tourist_attraction"] },
+            ],
+          },
+        ],
+      },
+      {
+        name: "Chamonix",
+        activTypes: [
+          {
+            name: "Outdoor activities",
+            activities: [
+              { name: "Climbing", image: "http", api_name: ["point_of_interest", "tourist_attraction"] },
+              { name: "Hiking", image: "http", api_name: ["point_of_interest", "tourist_attraction"] },
+            ],
+          },
+        ],
+      },
+      {
+        name: "Hossegor",
+        activTypes: [
+          {
+            name: "Water activities",
+            activities: [
+              { name: "Surfing", image: "http", api_name: ["surfing"] },
+            ],
+          },
+        ],
+      },
+      {
+        name: "Gruissan",
+        activTypes: [
+          {
+            name: "Water activities",
+            activities: [
+              { name: "Surfing", image: "http", api_name: ["surfing"] },
+            ],
+          },
+        ],
+      },
+      {
+        name: "Lyon",
+        activTypes: [
+          {
+            name: "Culinary experiences",
+            activities: [
+              { name: "Cooking classes", image: "http", api_name: ["cooking_school", 'food'] },
+            ],
+          },
+        ],
+      },
+      {
+        name: "Bordeaux",
+        activTypes: [
+          {
+            name: "Culinary experiences",
+            activities: [
+              { name: "Wine tasting", image: "http", api_name: ["liquor_store", 'bar'] },
+            ],
+          },
+        ],
+      },
+      {
+        name: "Cannes",
+        activTypes: [
+          {
+            name: "Entertainment",
+            activities: [
+              { name: "Festivals", image: "http", api_name: ["festival"] },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+];
 
-router.post("/", async (req, res) => {
+const topDestinations =
+[
+  { country: 'Spain', city: 'Barcelona' },
+  { country: 'United Kingdom', city: 'London' },
+  { country: 'Singapore', city: 'Singapore' },
+  { country: 'Italy', city: 'Milan' },
+  { country: 'South Korea', city: 'Seoul' },
+  { country: 'Hong Kong', city: 'Hong Kong' },
+  { country: 'Austria', city: 'Vienna' },
+  { country: 'Portugal', city: 'Lisbon' }
+];
+
+router.post('/', async (req, res) => {
   try {
-    const countriesResponse = await fetch('https://countriesnow.space/api/v0.1/countries');
-    const countriesData = await countriesResponse.json();
-  
-    for (let i = 21; i < countriesData.data.length; i++) {
-      const allCities = [];
-      const countryImgResponse = await fetch(`https://api.pexels.com/v1/search?query=${countriesData.data[i].country}&per_page=1`, {
-        headers: {
-          'Authorization': 'UU1bXYdwOwbaZQAkPKmKlLTwS5nHwvbkKRhAPMbQdYdRpZYB0gjVKaUQ'
-        }
-      });
-      console.log('country:',countriesData.data[i].country)
-
-      const countryImgData = await countryImgResponse.json();
-
-
-      let cities = countriesData.data[i].cities;
-
-
-      for (let j = 0; j < cities.length; j++) {
-
-        if (popularCities.some((element => element.city === cities[j]))) {
-
-          const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-          console.log(`city ${j} exists`)
-
-          const cityImgResponse = await fetch(`https://api.pexels.com/v1/search?query=${cities[j]}&per_page=1`, {
-            headers: {
-              'Authorization': 'UU1bXYdwOwbaZQAkPKmKlLTwS5nHwvbkKRhAPMbQdYdRpZYB0gjVKaUQ'
+    for (let i = 0; i < citiesActivities.length; i++) {
+      const countryData = await Country.findOne({ country: citiesActivities[i].country });
+      if (countryData) {
+        for (const city of citiesActivities[i].cities) {
+          const current = city;
+          const actualCity = countryData.cities.find(currentCity => currentCity.name === city.name);
+          if (actualCity !== undefined && actualCity !== null) {
+            const allTypes = [];
+            for (const type of city.activTypes) {
+              const allActivities = [];
+              for (const activity of type.activities) {
+                let activImg = "";
+                const activityResponse = await fetch(`https://api.pexels.com/v1/search?query=${activity.name}&per_page=1`, {
+                  headers: { 'Authorization': 'UU1bXYdwOwbaZQAkPKmKlLTwS5nHwvbkKRhAPMbQdYdRpZYB0gjVKaUQ' }
+                });
+                const activityImg = await activityResponse.json();
+                if (activityImg.photos && activityImg.photos[0] && activityImg.photos[0].length !== 0) {
+                  activImg = activityImg.photos[0].src.original;
+                } else {
+                  activImg = ''
+                }
+                const obj = { name: activity.name, apiName: activity.api_name[0], image: activImg };
+                allActivities.push(obj);
+              }
+              const obj = { name: type.name, activities: allActivities }
+              allTypes.push(obj);
             }
-          });
-
-          const cityImgData = await cityImgResponse.json();
-
-          await delay(1000);
-
-          if (cityImgData.photos && cityImgData.photos[0] && cityImgData.photos[0].length !== 0) {
-
-            const cityObj = {
-              name: cities[j],
-              cityImg: cityImgData.photos[0].src.original
-            };
-
-            allCities.push(cityObj);
+            const tmp = [];
+            const obj = { name: actualCity.name, cityImg: actualCity.cityImg, activitiesTypes: allTypes }
+            tmp.push(obj);
+            await Country.updateOne({ country: citiesActivities[i].country }, { cities: tmp });
           } else {
-            const cityObj = {
-              name: cities[j],
-              cityImg: 'https://images.pexels.com/photos/3769138/pexels-photo-3769138.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+            const cities = countryData.cities;
+            const cityResponse = await fetch(`https://api.pexels.com/v1/search?query=${current.name}&per_page=1`, {
+              headers: { 'Authorization': 'UU1bXYdwOwbaZQAkPKmKlLTwS5nHwvbkKRhAPMbQdYdRpZYB0gjVKaUQ' }
+            });
+            const cityImg = await cityResponse.json();
+            const allTypes = [];
+            for (const type of current.activTypes) {
+              const allActivities = [];
+              for (const activity of type.activities) {
+                let activImg = "";
+                const activityResponse = await fetch(`https://api.pexels.com/v1/search?query=${activity.name}&per_page=1`, {
+                  headers: { 'Authorization': 'UU1bXYdwOwbaZQAkPKmKlLTwS5nHwvbkKRhAPMbQdYdRpZYB0gjVKaUQ' }
+                });
+                const activityImg = await activityResponse.json();
+                if (activityImg.photos && activityImg.photos[0] && activityImg.photos[0].length !== 0) {
+                  activImg = activityImg.photos[0].src.original;
+                } else {
+                  activImg = ''
+                }
+                const obj = { name: activity.name, apiName: activity.api_name[0], image: activImg };
+                allActivities.push(obj);
+              }
+              const obj = { name: type.name, activities: allActivities }
+              allTypes.push(obj);
             }
-            allCities.push(cityObj);
+            let city = {};
+            if (cityImg.photos && cityImg.photos[0] && cityImg.photos[0].length !== 0) {
+              city = { name: current.name, cityImg: cityImg.photos[0].src.original, activitiesTypes: allTypes }
+            } else {
+              city = {
+                name: current.name,
+                cityImg: 'https://images.pexels.com/photos/3769138/pexels-photo-3769138.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                activitiesTypes: allTypes
+              }
+            }
+            cities.push(city);
+            await Country.updateOne({ country: citiesActivities[i].country }, { cities: cities });
           }
-        } else {  
-          console.log(`city ${j} doesn exists`)
-          const cityObj = {
-            name: cities[j],
-            cityImg: 'https://images.pexels.com/photos/3769138/pexels-photo-3769138.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
-          }
-          allCities.push(cityObj)
-
         }
-      }
-      const newCountry = new Country({
-        country: countriesData.data[i].country,
-        cities: allCities,
-        image: countryImgData.photos[0].src.original
-      });
+      } else {
+        const countryResponse = await fetch(`https://api.pexels.com/v1/search?query=${citiesActivities[i].country}&per_page=1`, {
+          headers: { 'Authorization': 'UU1bXYdwOwbaZQAkPKmKlLTwS5nHwvbkKRhAPMbQdYdRpZYB0gjVKaUQ' }
+        });
+        const countryImg = await countryResponse.json();
+        let image = "";
+        if (countryImg.photos && countryImg.photos[0] && countryImg.photos[0].length !== 0) {
+          image = countryImg.photos[0].src.original;
+        } else {
+          image = 'https://images.pexels.com/photos/3769138/pexels-photo-3769138.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1';
+        }
+        const cities = [];
+        for (const actualCity of citiesActivities[i].cities) {
+          const current = actualCity;
+          const cityResponse = await fetch(`https://api.pexels.com/v1/search?query=${current.name}&per_page=1`, {
+              headers: { 'Authorization': 'UU1bXYdwOwbaZQAkPKmKlLTwS5nHwvbkKRhAPMbQdYdRpZYB0gjVKaUQ' }
+            });
+          const cityImg = await cityResponse.json();
+          const allTypes = [];
+          for (const type of current.activTypes) {
+            const allActivities = [];
+            for (const activity of type.activities) {
+              let activImg = "";
+              const activityResponse = await fetch(`https://api.pexels.com/v1/search?query=${activity.name}&per_page=1`, {
+                headers: { 'Authorization': 'UU1bXYdwOwbaZQAkPKmKlLTwS5nHwvbkKRhAPMbQdYdRpZYB0gjVKaUQ' }
+              });
+              const activityImg = await activityResponse.json();
+              if (activityImg.photos && activityImg.photos[0] && activityImg.photos[0].length !== 0) {
+                activImg = activityImg.photos[0].src.original;
+              } else {
+                activImg = ''
+              }
+              const obj = { name: activity.name, apiName: activity.api_name[0], image: activImg };
+              allActivities.push(obj);
+            }
+            const obj = { name: type.name, activities: allActivities }
+            allTypes.push(obj);
+          }
+          let city = {};
+          if (cityImg.photos && cityImg.photos[0] && cityImg.photos[0].length !== 0) {
+            city = { name: current.name, cityImg: cityImg.photos[0].src.original, activitiesTypes: allTypes
+            }
+          } else {
+            city = {
+              name: current.name,
+              cityImg: 'https://images.pexels.com/photos/3769138/pexels-photo-3769138.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+              activitiesTypes: allTypes
+            }
+          }
+          cities.push(city);
+        }
+        const newCountry = new Country({
+          country: citiesActivities[i].country,
+          image: image,
+          cities: cities,
+        });
 
       await newCountry.save();
+      await newCountry.save();
+        await newCountry.save();
+      }
     }
-  } catch (error) {
-    console.error('Error:', error);
+  } catch {
     res.status(500).json({ result: false, error: 'Internal Server Error' });
+    return
   }
-
-  res.json({ result: true });
+    res.json({ result: true });
 });
 
-router.get("/Allcountries", async (req, res) => {
-  Country.find()
-    .then(data => {
-
-      let countries = [];
-      for (let i = 0; i < data.length; i++) {
-        console.log('data de i', data[i])
-        const country = {
-          name: data[i].name,
-          image: data[i].image,
-          id: data[i]._id
-        }
-        console.log('country', country)
-        countries.push(country);
-      }
-      console.log('countries', countries)
-      res.json({ result: true, countries });
-    });
+router.get("/", async (req, res) => {
+  const countries = await Country.find();
+  if (countries.length > 0) {
+    res.json({ result: true, countries });
+  } else {
+    res.json({ result: false, error: 'Cannot find any country' })
+  }
 })
 
-router.post("/cities", async (req, res) => {
-  Country.findOne({ country: req.body.country })
-    .then(data => {
-      console.log(data)
-      res.json({ result: true, cities: data.cities });
-    });
+router.get("/cities/:country", async (req, res) => {
+  const country = await Country.findOne({ country: req.params.country });
+  if (country) {
+    res.json({ result: true, cities: country.cities })
+  } else {
+    res.json({ result: false, error: "Country doesn't exist in database" });
+  }
 })
 
-router.post("/city", async (req, res) => {
-  Country.findOne({ country: req.body.country })
-    .then(data => {
-      const city = data.cities.find((element) => element.name === req.body.city)
-      res.json({ result: true, city });
-    });
+router.get("/city/:country/:city", async (req, res) => {
+  const country = await Country.findOne({ country: req.params.country });
+  if (country) {
+    const city = country.cities.find(city => city.name === req.params.city);
+    if (city) {
+      res.json({ result: true, city: city })
+    } else {
+      res.json({ result: false, error: "City not found in this country" })
+    }
+  } else {
+    res.json({ result: false, error: "Country doesn't exist in database" });
+  }
 })
-
-
-
-
 
 module.exports = router;
