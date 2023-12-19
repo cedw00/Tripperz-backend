@@ -787,7 +787,7 @@ const citiesActivities = [
             activities: [
               { name: "Local food tasting", image: "http", api_name: ["restaurant", "food"] },
               { name: "Cooking classes", image: "http", api_name: ["cooking_school", 'food'] },
-              { name: "Visiting markets", image: "http", api_name: ["market", 'food'] },
+              { name: "Markets", image: "http", api_name: ["market", 'food'] },
               { name: "Wine tasting", image: "http", api_name: ["liquor_store", 'bar'] },
             ],
           },
@@ -1387,26 +1387,8 @@ const citiesActivities = [
           {
             name: "Cultural Tourism",
             activities: [
-              { name: "Museum", image: "http", api_name: ["museum"] },
-            ],
-          },
-          {
-            name: "Guided Tours",
-            activities: [
-              { name: "Boat excursions", image: "http", api_name: ["point_of_interest", "tourist_attraction", 'boating'] },
-            ],
-          },
-          {
-            name: "Culinary experiences",
-            activities: [
-              { name: "Wine tasting", image: "http", api_name: ["liquor_store", 'bar'] },
-            ],
-          },
-          {
-            name: "Sport Activities",
-            activities: [
-              { name: "Golf", image: "http", api_name: ["golf"] },
-              { name: "Water sports", image: "http", api_name: ["water_sports", "water_activities", "aquatic_sports"] },
+              { name: "Historical sites and monuments", image: "http", api_name: ["tourist_attraction"] },
+              { name: "Iconic architecture", image: "http", api_name: ["point_of_interest", "tourist_attraction"] },
             ],
           },
         ],
@@ -1415,17 +1397,9 @@ const citiesActivities = [
         name: "Ma'in Hot Springs",
         activTypes: [
           {
-            name: "Water activities",
+            name: "Relaxation and Well-Being",
             activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
-            ],
-          },
-          {
-            name: "Outdoor activities",
-            activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
+              { name: "Hot springs", image: "http", api_name: ["spa"] },
             ],
           },
         ],
@@ -1439,17 +1413,10 @@ const citiesActivities = [
         name: "Angkor",
         activTypes: [
           {
-            name: "Water activities",
+            name: "Cultural Tourism",
             activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
-            ],
-          },
-          {
-            name: "Outdoor activities",
-            activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
+              { name: "Historical sites and monuments", image: "http", api_name: ["tourist_attraction"] },
+              { name: "Iconic architecture", image: "http", api_name: ["point_of_interest", "tourist_attraction"] },
             ],
           },
         ],
@@ -1463,17 +1430,10 @@ const citiesActivities = [
         name: "Machu Picchu",
         activTypes: [
           {
-            name: "Water activities",
+            name: "Cultural Tourism",
             activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
-            ],
-          },
-          {
-            name: "Outdoor activities",
-            activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
+              { name: "Historical sites and monuments", image: "http", api_name: ["tourist_attraction"] },
+              { name: "Iconic architecture", image: "http", api_name: ["point_of_interest", "tourist_attraction"] },
             ],
           },
         ],
@@ -1482,17 +1442,9 @@ const citiesActivities = [
         name: "Aguas Calientes",
         activTypes: [
           {
-            name: "Water activities",
-            activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
-            ],
-          },
-          {
             name: "Outdoor activities",
             activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
+              { name: "Trekking", image: "http", api_name: ["point_of_interest", "tourist_attraction"] },
             ],
           },
         ],
@@ -1501,17 +1453,9 @@ const citiesActivities = [
         name: "Lima",
         activTypes: [
           {
-            name: "Water activities",
+            name: "Culinary experiences",
             activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
-            ],
-          },
-          {
-            name: "Outdoor activities",
-            activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
+              { name: "Local food tasting", image: "http", api_name: ["restaurant", "food"] },
             ],
           },
         ],
@@ -1525,17 +1469,16 @@ const citiesActivities = [
         name: "Dubrovnik",
         activTypes: [
           {
-            name: "Water activities",
+            name: "Cultural Tourism",
             activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
+              { name: "Historical sites and monuments", image: "http", api_name: ["tourist_attraction"] },
+              { name: "Iconic architecture", image: "http", api_name: ["point_of_interest", "tourist_attraction"] },
             ],
           },
           {
-            name: "Outdoor activities",
+            name: "Guided Tours",
             activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
+              { name: "Walking tours", image: "http", api_name: ['point_of_interest', "tourist_attraction"] },
             ],
           },
         ],
@@ -1544,17 +1487,9 @@ const citiesActivities = [
         name: "Split",
         activTypes: [
           {
-            name: "Water activities",
+            name: "Water Activities",
             activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
-            ],
-          },
-          {
-            name: "Outdoor activities",
-            activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
+              { name: "Beach", image: "http", api_name: ["beach"] },
             ],
           },
         ],
@@ -1568,17 +1503,17 @@ const citiesActivities = [
         name: "Prague",
         activTypes: [
           {
-            name: "Water activities",
+            name: "Cultural Tourism",
             activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
+              { name: "Historical sites and monuments", image: "http", api_name: ["tourist_attraction"] },
+              { name: "Iconic architecture", image: "http", api_name: ["point_of_interest", "tourist_attraction"] },
             ],
           },
           {
-            name: "Outdoor activities",
+            name: "Guided Tours",
             activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
+              { name: "Walking tours", image: "http", api_name: ['point_of_interest', "tourist_attraction"] },
+              { name: "Thematic tours", image: "http", api_name: ["point_of_interest", "tourist_attraction"] },
             ],
           },
         ],
@@ -1592,17 +1527,17 @@ const citiesActivities = [
         name: "Beijing",
         activTypes: [
           {
-            name: "Water activities",
+            name: "Cultural Tourism",
             activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
+              { name: "Art Galleries", image: "http", api_name: ["art_gallery"] },
+              { name: "Historical sites and monuments", image: "http", api_name: ["tourist_attraction"] },
+              { name: "Iconic architecture", image: "http", api_name: ["point_of_interest", "tourist_attraction"] },
             ],
           },
           {
             name: "Outdoor activities",
             activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
+              { name: "Trekking", image: "http", api_name: ["point_of_interest", "tourist_attraction"] },
             ],
           },
         ],
@@ -1611,17 +1546,22 @@ const citiesActivities = [
         name: "Hong Kong",
         activTypes: [
           {
-            name: "Water activities",
+            name: "Guided Tours",
             activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
+              { name: "Walking tours", image: "http", api_name: ['point_of_interest', "tourist_attraction"] },
+              { name: "Boat excursions", image: "http", api_name: ['point_of_interest', "tourist_attraction", "boating"] },
             ],
           },
           {
-            name: "Outdoor activities",
+            name: "Entertainment",
             activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
+              { name: "Amusement parks and theme parks", image: "http", api_name: ["amusement_park"] },
+            ],
+          },
+          {
+            name: "Shopping",
+            activities: [
+              { name: "Markets", image: "http", api_name: ["shopping_mall", 'market'] },
             ],
           },
         ],
@@ -1630,17 +1570,9 @@ const citiesActivities = [
         name: "Shanghai",
         activTypes: [
           {
-            name: "Water activities",
+            name: "Entertainment",
             activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
-            ],
-          },
-          {
-            name: "Outdoor activities",
-            activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
+              { name: "Amusement parks and theme parks", image: "http", api_name: ["amusement_park"] },
             ],
           },
         ],
@@ -1654,9 +1586,10 @@ const citiesActivities = [
         name: "Mumbai",
         activTypes: [
           {
-            name: "Water activities",
+            name: "Cultural Tourism",
             activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
+              { name: "Art Galleries", image: "http", api_name: ["art_gallery"] },
+              { name: "Iconic architecture", image: "http", api_name: ["point_of_interest", "tourist_attraction"] },
             ],
           },
           {
@@ -1665,6 +1598,12 @@ const citiesActivities = [
               { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
               { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
               { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
+            ],
+          },
+          {
+            name: "Culinary experiences",
+            activities: [
+              { name: "Local food tasting", image: "http", api_name: ["restaurant", "food"] },
             ],
           },
         ],
@@ -1673,17 +1612,10 @@ const citiesActivities = [
         name: "Sawai Madhopur",
         activTypes: [
           {
-            name: "Water activities",
-            activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
-            ],
-          },
-          {
             name: "Outdoor activities",
             activities: [
               { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
               { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
             ],
           },
         ],
@@ -1692,17 +1624,9 @@ const citiesActivities = [
         name: "Rishikesh",
         activTypes: [
           {
-            name: "Water activities",
+            name: "Sport Activities",
             activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
-            ],
-          },
-          {
-            name: "Outdoor activities",
-            activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
+              { name: "Yoga and Wellness retreats", image: "http", api_name: ["yoga", "wellness", "retreat"] },
             ],
           },
         ],
@@ -1711,17 +1635,11 @@ const citiesActivities = [
         name: "Jaipur",
         activTypes: [
           {
-            name: "Water activities",
+            name: "Shopping",
             activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
-            ],
-          },
-          {
-            name: "Outdoor activities",
-            activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
+              { name: "Local Boutiques and Artisanal Products", image: "http", api_name: "shopping_mall" },
+              { name: "Markets", image: "http", api_name: "shopping_mall" },
+              // Ajoutez d'autres activités de shopping spécifiques à Cancún ici
             ],
           },
         ],
@@ -1735,17 +1653,37 @@ const citiesActivities = [
         name: "Sydney",
         activTypes: [
           {
-            name: "Water activities",
+            name: "Cultural Tourism",
             activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
+              { name: "Art Galleries", image: "http", api_name: ["art_gallery"] },
+              { name: "Iconic architecture", image: "http", api_name: ["point_of_interest", "tourist_attraction"] },
             ],
           },
           {
-            name: "Outdoor activities",
+            name: "Guided Tours",
             activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
+              { name: "Bus tours", image: "http", api_name: ["point_of_interest", "tourist_attraction"] },
+              { name: "Thematic tours", image: "http", api_name: ["point_of_interest", "tourist_attraction"] },
+              { name: "Boat excursions", image: "http", api_name: ['point_of_interest', "tourist_attraction", "boating"] },
+            ],
+          },
+          {
+            name: "Water Activities",
+            activities: [
+              { name: "Beach", image: "http", api_name: ["beach"] },
+            ],
+          },
+          {
+            name: "Entertainment",
+            activities: [
+              { name: "Shows and concerts", image: "http", api_name: ["movie_theater", 'event'] },
+              { name: "Theatre", image: "http", api_name: ["movie_theater", 'event'] },
+            ],
+          },
+          {
+            name: "Sport Activities",
+            activities: [
+              { name: "Water sports", image: "http", api_name: ["water_sports", "water_activities", "aquatic_sports"] },
             ],
           },
         ],
@@ -1756,13 +1694,14 @@ const citiesActivities = [
           {
             name: "Water activities",
             activities: [
+              { name: "Snorkeling", image: "http", api_name: ["snorkeling", "snorkeling_spot", "snorkeling_center"] },
               { name: "Surfing", image: "http", api_name: ["surfing"] },
+              { name: "Beach", image: "http", api_name: ["beach"] },
             ],
           },
           {
             name: "Outdoor activities",
             activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
               { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
               { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
             ],
@@ -1773,17 +1712,15 @@ const citiesActivities = [
         name: "Melbourne",
         activTypes: [
           {
-            name: "Water activities",
+            name: "Sport Activities",
             activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
+              { name: "Golf", image: "http", api_name: ["golf"] },
             ],
           },
           {
-            name: "Outdoor activities",
+            name: "Shopping",
             activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
+              { name: "Shopping Malls", image: "http", api_name: ["shopping_mall"] },
             ],
           },
         ],
@@ -1798,11 +1735,9 @@ const citiesActivities = [
             ],
           },
           {
-            name: "Outdoor activities",
+            name: "Sport Activities",
             activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
+              { name: "Yoga and Wellness retreats", image: "http", api_name: ["yoga", "wellness", "retreat"] },
             ],
           },
         ],
@@ -1813,15 +1748,7 @@ const citiesActivities = [
           {
             name: "Water activities",
             activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
-            ],
-          },
-          {
-            name: "Outdoor activities",
-            activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
+              { name: "Jet Ski", image: "http", api_name: ["jet_ski_rental"] },
             ],
           },
         ],
@@ -1830,36 +1757,9 @@ const citiesActivities = [
         name: "Barossa Valley",
         activTypes: [
           {
-            name: "Water activities",
+            name: "Culinary experiences",
             activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
-            ],
-          },
-          {
-            name: "Outdoor activities",
-            activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
-            ],
-          },
-        ],
-      },
-      {
-        name: "Hobart",
-        activTypes: [
-          {
-            name: "Water activities",
-            activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
-            ],
-          },
-          {
-            name: "Outdoor activities",
-            activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
+              { name: "Wine tasting", image: "http", api_name: ["liquor_store", 'bar'] },
             ],
           },
         ],
@@ -1873,17 +1773,9 @@ const citiesActivities = [
         name: "São Paulo",
         activTypes: [
           {
-            name: "Water activities",
+            name: "Cultural Tourism",
             activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
-            ],
-          },
-          {
-            name: "Outdoor activities",
-            activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
+              { name: "Art Galleries", image: "http", api_name: ["art_gallery"] },
             ],
           },
         ],
@@ -1892,36 +1784,33 @@ const citiesActivities = [
         name: "Rio de Janeiro",
         activTypes: [
           {
-            name: "Water activities",
+            name: "Cultural Tourism",
             activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
+              { name: "Iconic architecture", image: "http", api_name: ["point_of_interest", "tourist_attraction"] },
             ],
           },
           {
-            name: "Outdoor activities",
+            name: "Guided Tours",
             activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
-            ],
-          },
-        ],
-      },
-      {
-        name: "Salvador",
-        activTypes: [
-          {
-            name: "Water activities",
-            activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
+              { name: "Boat excursions", image: "http", api_name: ['point_of_interest', "tourist_attraction", "boating"] },
             ],
           },
           {
-            name: "Outdoor activities",
+            name: "Water Activities",
             activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
+              { name: "Beach", image: "http", api_name: ["beach"] },
+            ],
+          },
+          {
+            name: "Entertainment",
+            activities: [
+              { name: "Festivals", image: "http", api_name: ["festival"] },
+            ],
+          },
+          {
+            name: "Sport Activities",
+            activities: [
+              { name: "Water sports", image: "http", api_name: ["water_sports", "water_activities", "aquatic_sports"] },
             ],
           },
         ],
@@ -1929,12 +1818,6 @@ const citiesActivities = [
       {
         name: "Cuiabá",
         activTypes: [
-          {
-            name: "Water activities",
-            activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
-            ],
-          },
           {
             name: "Outdoor activities",
             activities: [
@@ -1948,12 +1831,6 @@ const citiesActivities = [
       {
         name: "Manaus",
         activTypes: [
-          {
-            name: "Water activities",
-            activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
-            ],
-          },
           {
             name: "Outdoor activities",
             activities: [
@@ -1973,14 +1850,6 @@ const citiesActivities = [
               { name: "Surfing", image: "http", api_name: ["surfing"] },
             ],
           },
-          {
-            name: "Outdoor activities",
-            activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
-            ],
-          },
         ],
       },
     ],
@@ -1992,17 +1861,15 @@ const citiesActivities = [
         name: "Buenos Aires",
         activTypes: [
           {
-            name: "Water activities",
+            name: "Cultural Tourism",
             activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
+              { name: "Iconic architecture", image: "http", api_name: ["point_of_interest", "tourist_attraction"] },
             ],
           },
           {
-            name: "Outdoor activities",
+            name: "Guided Tours",
             activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
+              { name: "Walking tours", image: "http", api_name: ['point_of_interest', "tourist_attraction"] },
             ],
           },
         ],
@@ -2011,17 +1878,9 @@ const citiesActivities = [
         name: "Mendoza",
         activTypes: [
           {
-            name: "Water activities",
+            name: "Culinary experiences",
             activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
-            ],
-          },
-          {
-            name: "Outdoor activities",
-            activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
+              { name: "Wine tasting", image: "http", api_name: ["liquor_store", 'bar'] },
             ],
           },
         ],
@@ -2030,17 +1889,9 @@ const citiesActivities = [
         name: "Patagonia",
         activTypes: [
           {
-            name: "Water activities",
-            activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
-            ],
-          },
-          {
             name: "Outdoor activities",
             activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
               { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
             ],
           },
         ],
@@ -2054,9 +1905,38 @@ const citiesActivities = [
         name: "Dubai",
         activTypes: [
           {
+            name: "Cultural Tourism",
+            activities: [
+              { name: "Art Galleries", image: "http", api_name: ["art_gallery"] },
+              { name: "Iconic architecture", image: "http", api_name: ["point_of_interest", "tourist_attraction"] },
+            ],
+          },
+          {
+            name: "Guided Tours",
+            activities: [
+              { name: "Bus tours", image: "http", api_name: ["point_of_interest", "tourist_attraction"] },
+              { name: "Boat excursions", image: "http", api_name: ['point_of_interest', "tourist_attraction", "boating"] },
+            ],
+          },
+          {
             name: "Water activities",
             activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
+              { name: "Pool Clubs", image: "http", api_name: ["resort", 'swimming pool'] },
+              { name: "Jet Ski", image: "http", api_name: ["jet_ski_rental"] },
+              { name: "Beach", image: "http", api_name: ["beach"] },
+            ],
+          },
+          {
+            name: "Sport Activities",
+            activities: [
+              { name: "Golf", image: "http", api_name: ["golf"] },
+              { name: "Water sports", image: "http", api_name: ["water_sports", "water_activities", "aquatic_sports"] },
+            ],
+          },
+          {
+            name: "Shopping",
+            activities: [
+              { name: "Shopping Malls", image: "http", api_name: ["shopping_mall"] },
             ],
           },
           {
@@ -2073,9 +1953,39 @@ const citiesActivities = [
         name: "Abu Dhabi",
         activTypes: [
           {
+            name: "Cultural Tourism",
+            activities: [
+              { name: "Museum", image: "http", api_name: ["museum"] },
+              { name: "Art Galleries", image: "http", api_name: ["art_gallery"] },
+              { name: "Iconic architecture", image: "http", api_name: ["point_of_interest", "tourist_attraction"] },
+            ],
+          },
+          {
+            name: "Guided Tours",
+            activities: [
+              { name: "Bus tours", image: "http", api_name: ["point_of_interest", "tourist_attraction"] },
+              { name: "Boat excursions", image: "http", api_name: ['point_of_interest', "tourist_attraction", "boating"] },
+            ],
+          },
+          {
             name: "Water activities",
             activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
+              { name: "Pool Clubs", image: "http", api_name: ["resort", 'swimming pool'] },
+              { name: "Jet Ski", image: "http", api_name: ["jet_ski_rental"] },
+              { name: "Beach", image: "http", api_name: ["beach"] },
+            ],
+          },
+          {
+            name: "Sport Activities",
+            activities: [
+              { name: "Golf", image: "http", api_name: ["golf"] },
+              { name: "Water sports", image: "http", api_name: ["water_sports", "water_activities", "aquatic_sports"] },
+            ],
+          },
+          {
+            name: "Shopping",
+            activities: [
+              { name: "Shopping Malls", image: "http", api_name: ["shopping_mall"] },
             ],
           },
           {
@@ -2097,17 +2007,24 @@ const citiesActivities = [
         name: "Berlin",
         activTypes: [
           {
-            name: "Water activities",
+            name: "Cultural Tourism",
             activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
+              { name: "Museum", image: "http", api_name: ["museum"] },
+              { name: "Art Galleries", image: "http", api_name: ["art_gallery"] },
+              { name: "Iconic architecture", image: "http", api_name: ["point_of_interest", "tourist_attraction"] },
             ],
           },
           {
-            name: "Outdoor activities",
+            name: "Guided Tours",
             activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
+              { name: "Bus tours", image: "http", api_name: ["point_of_interest", "tourist_attraction"] },
+              { name: "Thematic tours", image: "http", api_name: ["point_of_interest", "tourist_attraction"] },
+            ],
+          },
+          {
+            name: "Entertainment",
+            activities: [
+              { name: "Shows and concerts", image: "http", api_name: ["movie_theater", 'event'] },
             ],
           },
         ],
@@ -2116,17 +2033,9 @@ const citiesActivities = [
         name: "Nuremberg",
         activTypes: [
           {
-            name: "Water activities",
-            activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
-            ],
-          },
-          {
             name: "Outdoor activities",
             activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
+              { name: "Climbing", image: "http", api_name: ["point_of_interest", "tourist_attraction"] },
             ],
           },
         ],
@@ -2135,17 +2044,9 @@ const citiesActivities = [
         name: "Munich",
         activTypes: [
           {
-            name: "Water activities",
+            name: "Entertainment",
             activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
-            ],
-          },
-          {
-            name: "Outdoor activities",
-            activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
+              { name: "Festivals", image: "http", api_name: ["festival"] },
             ],
           },
         ],
@@ -2159,16 +2060,15 @@ const citiesActivities = [
         name: "Vancouver",
         activTypes: [
           {
-            name: "Water activities",
+            name: "Guided Tours",
             activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
+              { name: "Boat excursions", image: "http", api_name: ['point_of_interest', "tourist_attraction", "boating"] },
+              { name: "Bus tours", image: "http", api_name: ["point_of_interest", "tourist_attraction"] },
             ],
           },
           {
             name: "Outdoor activities",
             activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
               { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
             ],
           },
@@ -2178,17 +2078,21 @@ const citiesActivities = [
         name: "Banff",
         activTypes: [
           {
-            name: "Water activities",
+            name: "Outdoor activities",
             activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
+              { name: "Hiking", image: "http", api_name: ["point_of_interest", "tourist_attraction"] },
             ],
           },
           {
-            name: "Outdoor activities",
+            name: "Sport Activities",
             activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
+              { name: "Skiing and Snowboarding", image: "http", api_name: ["ski_resort"] },
+            ],
+          },
+          {
+            name: "Relaxation and Well-Being",
+            activities: [
+              { name: "Hot springs", image: "http", api_name: ["spa"] },
             ],
           },
         ],
@@ -2197,17 +2101,15 @@ const citiesActivities = [
         name: "Toronto",
         activTypes: [
           {
-            name: "Water activities",
+            name: "Cultural Tourism",
             activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
+              { name: "Iconic architecture", image: "http", api_name: ["point_of_interest", "tourist_attraction"] },
             ],
           },
           {
-            name: "Outdoor activities",
+            name: "Guided Tours",
             activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
+              { name: "Bus tours", image: "http", api_name: ["point_of_interest", "tourist_attraction"] },
             ],
           },
         ],
@@ -2216,15 +2118,8 @@ const citiesActivities = [
         name: "Churchill",
         activTypes: [
           {
-            name: "Water activities",
-            activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
-            ],
-          },
-          {
             name: "Outdoor activities",
             activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
               { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
               { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
             ],
@@ -2237,15 +2132,7 @@ const citiesActivities = [
           {
             name: "Water activities",
             activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
-            ],
-          },
-          {
-            name: "Outdoor activities",
-            activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
+              { name: "Kayaking", image: "http", api_name: ["kayaking", 'kayak_rental'] },
             ],
           },
         ],
@@ -2254,36 +2141,9 @@ const citiesActivities = [
         name: "Whistler",
         activTypes: [
           {
-            name: "Water activities",
+            name: "Sport Activities",
             activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
-            ],
-          },
-          {
-            name: "Outdoor activities",
-            activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
-            ],
-          },
-        ],
-      },
-      {
-        name: "Alberta",
-        activTypes: [
-          {
-            name: "Water activities",
-            activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
-            ],
-          },
-          {
-            name: "Outdoor activities",
-            activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
+              { name: "Skiing and Snowboarding", image: "http", api_name: ["ski_resort"] },
             ],
           },
         ],
@@ -2292,17 +2152,21 @@ const citiesActivities = [
         name: "Montreal",
         activTypes: [
           {
-            name: "Water activities",
+            name: "Cultural Tourism",
             activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
+              { name: "Iconic architecture", image: "http", api_name: ["point_of_interest", "tourist_attraction"] },
             ],
           },
           {
-            name: "Outdoor activities",
+            name: "Guided Tours",
             activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
+              { name: "Bus tours", image: "http", api_name: ["point_of_interest", "tourist_attraction"] },
+            ],
+          },
+          {
+            name: "Entertainment",
+            activities: [
+              { name: "Festivals", image: "http", api_name: ["festival"] },
             ],
           },
         ],
@@ -2310,18 +2174,10 @@ const citiesActivities = [
       {
         name: "Edmonton",
         activTypes: [
-          {
-            name: "Water activities",
+           {
+            name: "Shopping",
             activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
-            ],
-          },
-          {
-            name: "Outdoor activities",
-            activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
+              { name: "Shopping Malls", image: "http", api_name: ["shopping_mall"] },
             ],
           },
         ],
@@ -2335,17 +2191,9 @@ const citiesActivities = [
         name: "Stockholm",
         activTypes: [
           {
-            name: "Water activities",
+            name: "Guided Tours",
             activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
-            ],
-          },
-          {
-            name: "Outdoor activities",
-            activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
+              { name: "Boat excursions", image: "http", api_name: ['point_of_interest', "tourist_attraction", "boating"] },
             ],
           },
         ],
@@ -2359,17 +2207,10 @@ const citiesActivities = [
         name: "Ari",
         activTypes: [
           {
-            name: "Water activities",
+            name: "Water Activities",
             activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
-            ],
-          },
-          {
-            name: "Outdoor activities",
-            activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
+              { name: "Snorkeling", image: "http", api_name: ["snorkeling", "snorkeling_spot", "snorkeling_center"] },
+              { name: "Beach", image: "http", api_name: ["beach"] },
             ],
           },
         ],
@@ -2383,17 +2224,10 @@ const citiesActivities = [
         name: "Bora Bora",
         activTypes: [
           {
-            name: "Water activities",
+            name: "Water Activities",
             activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
-            ],
-          },
-          {
-            name: "Outdoor activities",
-            activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
+              { name: "Snorkeling", image: "http", api_name: ["snorkeling", "snorkeling_spot", "snorkeling_center"] },
+              { name: "Beach", image: "http", api_name: ["beach"] },
             ],
           },
         ],
@@ -2407,17 +2241,10 @@ const citiesActivities = [
         name: "Raja Ampat",
         activTypes: [
           {
-            name: "Water activities",
+            name: "Water Activities",
             activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
-            ],
-          },
-          {
-            name: "Outdoor activities",
-            activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
+              { name: "Snorkeling", image: "http", api_name: ["snorkeling", "snorkeling_spot", "snorkeling_center"] },
+              { name: "Beach", image: "http", api_name: ["beach"] },
             ],
           },
         ],
@@ -2429,14 +2256,29 @@ const citiesActivities = [
             name: "Water activities",
             activities: [
               { name: "Surfing", image: "http", api_name: ["surfing"] },
+              { name: "Snorkeling", image: "http", api_name: ["snorkeling", "snorkeling_spot", "snorkeling_center"] },
+              { name: "Beach", image: "http", api_name: ["beach"] },
             ],
           },
           {
-            name: "Outdoor activities",
+            name: "Sport Activities",
             activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
+              { name: "Water sports", image: "http", api_name: ["water_sports", "water_activities", "aquatic_sports"] },
+            ],
+          },
+          {
+            name: "Relaxation and Well-Being",
+            activities: [
+              { name: "Spa and Massages", image: "http", api_name: ["spa"] },
+              { name: "Yoga and Wellness retreats", image: "http", api_name: ["yoga", "wellness", "retreat"] },
+            ],
+          },
+          {
+            name: "Shopping",
+            activities: [
+              { name: "Local Boutiques and Artisanal Products", image: "http", api_name: "shopping_mall" },
+              { name: "Markets", image: "http", api_name: "shopping_mall" },
+              // Ajoutez d'autres activités de shopping spécifiques à Cancún ici
             ],
           },
         ],
@@ -2445,17 +2287,9 @@ const citiesActivities = [
         name: "Jakarta",
         activTypes: [
           {
-            name: "Water activities",
+            name: "Cultural Tourism",
             activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
-            ],
-          },
-          {
-            name: "Outdoor activities",
-            activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
+              { name: "Iconic architecture", image: "http", api_name: ["point_of_interest", "tourist_attraction"] },
             ],
           },
         ],
@@ -2471,15 +2305,14 @@ const citiesActivities = [
           {
             name: "Water activities",
             activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
+              { name: "Snorkeling", image: "http", api_name: ["snorkeling", "snorkeling_spot", "snorkeling_center"] },
+              { name: "Beach", image: "http", api_name: ["beach"] },
             ],
           },
           {
-            name: "Outdoor activities",
+            name: "Relaxation and Well-Being",
             activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
+              { name: "Spa and Massages", image: "http", api_name: ["spa"] },
             ],
           },
         ],
@@ -2488,17 +2321,24 @@ const citiesActivities = [
         name: "Phuket",
         activTypes: [
           {
-            name: "Water activities",
+            name: "Water Activities",
             activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
+              { name: "Pool Clubs", image: "http", api_name: ["resort", 'swimming pool'] },
+              { name: "Jet Ski", image: "http", api_name: ["jet_ski_rental"] },
+              { name: "Beach", image: "http", api_name: ["beach"] },
             ],
           },
           {
-            name: "Outdoor activities",
+            name: "Shopping",
             activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
+              { name: "Local Boutiques and Artisanal Products", image: "http", api_name: "shopping_mall" },
+              { name: "Markets", image: "http", api_name: "shopping_mall" },
+            ],
+          },
+          {
+            name: "Relaxation and Well-Being",
+            activities: [
+              { name: "Spa and Massages", image: "http", api_name: ["spa"] },
             ],
           },
         ],
@@ -2506,18 +2346,35 @@ const citiesActivities = [
       {
         name: "Bangkok",
         activTypes: [
-          {
-            name: "Water activities",
+           {
+            name: "Guided Tours",
             activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
+              { name: "Walking tours", image: "http", api_name: ['point_of_interest', "tourist_attraction"] },
+              { name: "Boat excursions", image: "http", api_name: ['point_of_interest', "tourist_attraction", "boating"] },
+              { name: "Bus tours", image: "http", api_name: ["point_of_interest", "tourist_attraction"] },
+              { name: "Thematic tours", image: "http", api_name: ["point_of_interest", "tourist_attraction"] },
             ],
           },
           {
-            name: "Outdoor activities",
+            name: "Culinary experiences",
             activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
+              { name: "Local food tasting", image: "http", api_name: ["restaurant", "food"] },
+              { name: "Visiting market", image: "http", api_name: ["liquor_store", 'bar'] },
+              { name: "Cooking classes", image: "http", api_name: ["cooking_school", 'food'] },
+            ],
+          },
+          {
+            name: "Shopping",
+            activities: [
+              { name: "Local Boutiques and Artisanal Products", image: "http", api_name: "shopping_mall" },
+              { name: "Markets", image: "http", api_name: "shopping_mall" },
+              { name: "Shopping Malls", image: "http", api_name: ["shopping_mall"] },
+            ],
+          },
+          {
+            name: "Relaxation and Well-Being",
+            activities: [
+              { name: "Spa and Massages", image: "http", api_name: ["spa"] },
             ],
           },
         ],
@@ -2526,17 +2383,9 @@ const citiesActivities = [
         name: "Chiang Mai",
         activTypes: [
           {
-            name: "Water activities",
+            name: "Relaxation and Well-Being",
             activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
-            ],
-          },
-          {
-            name: "Outdoor activities",
-            activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
+              { name: "Spa and Massages", image: "http", api_name: ["spa"] },
             ],
           },
         ],
@@ -2545,17 +2394,24 @@ const citiesActivities = [
         name: "Koh Samui",
         activTypes: [
           {
-            name: "Water activities",
+            name: "Water Activities",
             activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
+              { name: "Pool Clubs", image: "http", api_name: ["resort", 'swimming pool'] },
+              { name: "Jet Ski", image: "http", api_name: ["jet_ski_rental"] },
+              { name: "Beach", image: "http", api_name: ["beach"] },
             ],
           },
           {
-            name: "Outdoor activities",
+            name: "Shopping",
             activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
+              { name: "Local Boutiques and Artisanal Products", image: "http", api_name: "shopping_mall" },
+              { name: "Markets", image: "http", api_name: "shopping_mall" },
+            ],
+          },
+          {
+            name: "Relaxation and Well-Being",
+            activities: [
+              { name: "Spa and Massages", image: "http", api_name: ["spa"] },
             ],
           },
         ],
@@ -2574,48 +2430,14 @@ const citiesActivities = [
               { name: "Surfing", image: "http", api_name: ["surfing"] },
             ],
           },
-          {
-            name: "Outdoor activities",
-            activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
-            ],
-          },
         ],
       },
       {
         name: "San Jose",
         activTypes: [
           {
-            name: "Water activities",
-            activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
-            ],
-          },
-          {
             name: "Outdoor activities",
             activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
-            ],
-          },
-        ],
-      },
-      {
-        name: "Monteverde",
-        activTypes: [
-          {
-            name: "Water activities",
-            activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
-            ],
-          },
-          {
-            name: "Outdoor activities",
-            activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
               { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
               { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
             ],
@@ -2631,17 +2453,11 @@ const citiesActivities = [
         name: "Hanoi",
         activTypes: [
           {
-            name: "Water activities",
+            name: "Culinary experiences",
             activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
-            ],
-          },
-          {
-            name: "Outdoor activities",
-            activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
+              { name: "Local food tasting", image: "http", api_name: ["restaurant", "food"] },
+              { name: "Cooking classes", image: "http", api_name: ["cooking_school", 'food'] },
+              { name: "Visiting market", image: "http", api_name: ["liquor_store", 'bar'] },
             ],
           },
         ],
@@ -2650,17 +2466,9 @@ const citiesActivities = [
         name: "Ho Chi Minh City",
         activTypes: [
           {
-            name: "Water activities",
+            name: "Culinary experiences",
             activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
-            ],
-          },
-          {
-            name: "Outdoor activities",
-            activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
+              { name: "Visiting market", image: "http", api_name: ["liquor_store", 'bar'] },
             ],
           },
         ],
@@ -2669,17 +2477,9 @@ const citiesActivities = [
         name: "Ha Long",
         activTypes: [
           {
-            name: "Water activities",
+            name: "Water Activities",
             activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
-            ],
-          },
-          {
-            name: "Outdoor activities",
-            activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
+              { name: "Kayaking", image: "http", api_name: ["kayaking", 'kayak_rental'] },
             ],
           },
         ],
@@ -2693,36 +2493,9 @@ const citiesActivities = [
         name: "Bergen",
         activTypes: [
           {
-            name: "Water activities",
+            name: "Water Activities",
             activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
-            ],
-          },
-          {
-            name: "Outdoor activities",
-            activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
-            ],
-          },
-        ],
-      },
-      {
-        name: "Solvaer (Svolvær)",
-        activTypes: [
-          {
-            name: "Water activities",
-            activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
-            ],
-          },
-          {
-            name: "Outdoor activities",
-            activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
+              { name: "Kayaking", image: "http", api_name: ["kayaking", 'kayak_rental'] },
             ],
           },
         ],
@@ -2736,15 +2509,8 @@ const citiesActivities = [
         name: "Bialowieza (Białowieża)",
         activTypes: [
           {
-            name: "Water activities",
-            activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
-            ],
-          },
-          {
             name: "Outdoor activities",
             activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
               { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
               { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
             ],
@@ -2760,15 +2526,8 @@ const citiesActivities = [
         name: "Ranomafana",
         activTypes: [
           {
-            name: "Water activities",
-            activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
-            ],
-          },
-          {
             name: "Outdoor activities",
             activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
               { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
               { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
             ],
@@ -2779,15 +2538,8 @@ const citiesActivities = [
         name: "Antananarivo",
         activTypes: [
           {
-            name: "Water activities",
-            activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
-            ],
-          },
-          {
             name: "Outdoor activities",
             activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
               { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
               { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
             ],
@@ -2803,36 +2555,9 @@ const citiesActivities = [
         name: "Copenhagen",
         activTypes: [
           {
-            name: "Water activities",
-            activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
-            ],
-          },
-          {
             name: "Outdoor activities",
             activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
-            ],
-          },
-        ],
-      },
-      {
-        name: "Torshavn (Tórshavn)",
-        activTypes: [
-          {
-            name: "Water activities",
-            activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
-            ],
-          },
-          {
-            name: "Outdoor activities",
-            activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
+              { name: "Cycling", image: "http", api_name: ["bicycle_rental"] },
             ],
           },
         ],
@@ -2846,17 +2571,9 @@ const citiesActivities = [
         name: "Reykjavik",
         activTypes: [
           {
-            name: "Water activities",
+            name: "Relaxation and Well-Being",
             activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
-            ],
-          },
-          {
-            name: "Outdoor activities",
-            activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
+              { name: "Hot springs", image: "http", api_name: ["spa"] },
             ],
           },
         ],
@@ -2864,10 +2581,21 @@ const citiesActivities = [
     ],
   },
   {
-    country: "Hungary",
+    country: "Morocco",
     cities: [
       {
-        name: "Budapest",
+        name: "Agadir",
+        activTypes: [
+          {
+            name: "Water activities",
+            activities: [
+              { name: "Surfing", image: "http", api_name: ["surfing"] },
+            ],
+          },
+        ],
+      },
+      {
+        name: "Dakhla",
         activTypes: [
           {
             name: "Water activities",
@@ -2885,13 +2613,8 @@ const citiesActivities = [
           },
         ],
       },
-    ],
-  },
-  {
-    country: "Bhutan",
-    cities: [
       {
-        name: "Thimphu",
+        name: "Marrakech",
         activTypes: [
           {
             name: "Water activities",
@@ -2900,35 +2623,29 @@ const citiesActivities = [
             ],
           },
           {
-            name: "Outdoor activities",
+            name: "Culinary experiences",
             activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
+              { name: "Local food tasting", image: "http", api_name: ["restaurant", "food"] },
+              { name: "Cooking classes", image: "http", api_name: ["cooking_school", 'food'] },
+              { name: "Visiting market", image: "http", api_name: ["liquor_store", 'bar'] },
+            ],
+          },
+          {
+            name: "Relaxation and Well-Being",
+            activities: [
+              { name: "Spa and Massages", image: "http", api_name: ["spa"] },
             ],
           },
         ],
       },
-    ],
-  },
-  {
-    country: "Palau",
-    cities: [
       {
-        name: "Palau",
+        name: "Fes",
         activTypes: [
           {
-            name: "Water activities",
+            name: "Shopping",
             activities: [
-              { name: "Surfing", image: "http", api_name: ["surfing"] },
-            ],
-          },
-          {
-            name: "Outdoor activities",
-            activities: [
-              { name: "Safari", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Wildlife observation", image: "http", api_name: ["zoo", 'natural_feature'] },
-              { name: "Visiting nature reserves", image: "http", api_name: ["zoo", 'natural_feature'] },
+              { name: "Local Boutiques and Artisanal Products", image: "http", api_name: "shopping_mall" },
+              { name: "Markets", image: "http", api_name: "shopping_mall" },
             ],
           },
         ],
