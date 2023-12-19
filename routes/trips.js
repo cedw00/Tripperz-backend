@@ -12,7 +12,7 @@ router.get('/:token', async (req, res) => {
             if (data.length > 0) {
                 res.json({ result: true, trips: data })
             } else {
-                res.json({ result: false, error: "You don't have any trips planned" });
+                res.json({ result: false, error: "You don't have any trips planned", trips: []});
             }
         })
     } else {
@@ -37,7 +37,7 @@ router.post('/', async (req, res) => {
             countryDest: countryDest,
             cityDest: cityDest,
             tripImage: img,
-            activitiesList: [],
+            activitiesList: activitiesList,
             usersList: users
         });
 
@@ -86,19 +86,22 @@ router.put('/invite', async (req, res) => {
 
 router.put('/update', async (req, res) => {
     const trip = await Trip.findById({ _id: req.body.id });
-    const { id, activitiesList } = req.body;
-    Trip.findOneAndUpdate({ _id: id }, { activitiesList: activitiesList, }).then(data => {
-
-    })
     if (trip) {
-        Trip.updateOne({ _id: id }, { activitiesList: activitiesList, }).then(response => {
-            if (response.modifiedCount > 0) {
-                Trip.findById({ _id: id }).then(updatedTrip => {
-                    res.json({ result: true,  trip: updatedTrip });
-                })
-            } else {
-                res.json({ result: false, error: "Failed to update trip" });
-            }
+        const { id, activitiesList } = req.body;
+        const newList = [];
+        for (const activity of activitiesList) {
+            const obj = {
+                name: activity.name,
+                type: activity.type,
+                address: activity.address
+            };
+            newList.push(obj);
+        }
+        Trip.findOneAndUpdate({ _id: id }, { activitiesList: newList, }).then(data => {
+            Trip.findById({ _id: req.body.id }).then(trip => {
+                res.json({ result: true, data: trip });
+                return;
+            })
         })
     } else {
         res.json({ result: false, error: "Trip doesn't exist" });

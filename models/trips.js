@@ -3,8 +3,7 @@ const mongoose = require('mongoose');
 const activitySchema = mongoose.Schema({
     name: String,
     type: String,
-    country: String,
-    city: String,
+    address: String
 });
 
 const tripSchema = mongoose.Schema({
