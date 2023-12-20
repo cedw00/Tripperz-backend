@@ -3,8 +3,7 @@ const mongoose = require('mongoose');
 const activitySchema = mongoose.Schema({
     name: String,
     type: String,
-    country: String,
-    city: String,
+    address: String
 });
 
 const tripSchema = mongoose.Schema({
@@ -12,6 +11,7 @@ const tripSchema = mongoose.Schema({
  endDate: String,
  countryDest: String,
  cityDest: String,
+ tripImage: String,
  activitiesList: [activitySchema],
  usersList: [{ type: mongoose.Schema.Types.ObjectId, ref: 'users' }],
 });
