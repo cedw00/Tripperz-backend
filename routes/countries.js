@@ -125,36 +125,61 @@ router.post('/', async (req, res) => {
     res.json({ result: true });
 });
 
-router.get("/", async (req, res) => {
-  const countries = await Country.find();
-  if (countries.length > 0) {
-    res.json({ result: true, countries });
-  } else {
-    res.json({ result: false, error: 'Cannot find any country' })
-  }
-})
-
-router.get("/cities/:country", async (req, res) => {
-  const country = await Country.findOne({ country: req.params.country });
-  if (country) {
-    res.json({ result: true, cities: country.cities })
-  } else {
-    res.json({ result: false, error: "Country doesn't exist in database" });
-  }
-})
-
-router.get("/city/:country/:city", async (req, res) => {
-  const country = await Country.findOne({ country: req.params.country });
-  if (country) {
-    const city = country.cities.find(city => city.name === req.params.city);
-    if (city) {
-      res.json({ result: true, city: city })
-    } else {
-      res.json({ result: false, error: "City not found in this country" })
+router.get("/Allcountries", async (req, res) => {
+  const countries = await Country.find().lean()
+  let activTypes = [];
+  let activities = [];
+  for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < countries[i].cities.length; j++) {
+      console.log('country', countries[i]);
+      console.log('cities', countries[i].cities[j])
+      for (let e = 0; e < countries[i].cities[j].activitiesTypes.length; e++) {
+        console.log('activity type', countries[i].cities[j].activitiesTypes[e].type)
+        const exists = activTypes.find((element) => element.type === countries[i].cities[j].activitiesTypes[e].type);
+        console.log('exists', !exists)
+        if (!exists) {
+          const activityTypes = {
+            type: countries[i].cities[j].activitiesTypes[e].type,
+            key: e
+          }
+          activTypes.push(activityTypes)
+          console.log('activity tipes array', activTypes)
+          for (let index = 0; index < countries[i].cities[j].activitiesTypes[e].activity.length; index++) {
+            const exists = activities.some((element) => element.name === countries[i].cities[j].activitiesTypes[e].activity[index].name)
+            if (!exists) {
+              const activity = {
+                name: countries[i].cities[j].activitiesTypes[e].activity[index].name,
+                key: index
+              }
+              activities.push(activity)
+            }
+          }
+        }
+      }
     }
-  } else {
-    res.json({ result: false, error: "Country doesn't exist in database" });
   }
-})
+  res.json({ result: true, activTypes, activities });
+});
+
+router.post("/cities", async (req, res) => {
+  Country.findOne({ country: req.body.country })
+    .then(data => {
+      res.json({ result: true, cities: data.cities });
+    });
+});
+
+router.post("/city", async (req, res) => {
+  Country.findOne({ country: req.body.country })
+    .then(data => {
+
+      const city = data.cities.find((element) => element.name === req.body.city)
+      if (city) {
+        res.json({ result: true, city });
+      } else {
+        res.json({ result: false, err: 'city doesnt exists' });
+      }
+
+    });
+});
 
 module.exports = router;

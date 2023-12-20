@@ -14,6 +14,7 @@ var profileRouter = require('./routes/profile');
 var countriesRouter = require('./routes/countries');
 var placesRouter = require('./routes/places');
 
+
 var app = express();
 
 const cors = require('cors');
@@ -31,6 +32,7 @@ app.use('/profile', profileRouter);
 app.use('/trips', tripsRouter);
 app.use('/countries',countriesRouter)
 app.use('/places', placesRouter);
+
 
 module.exports = app;
 
