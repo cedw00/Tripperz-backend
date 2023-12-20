@@ -110,19 +110,24 @@ router.put('/update', async (req, res) => {
 
 router.delete('/:tripId/:token', async (req, res) => {
     const { tripId, token } = req.params;
+    const trip = await Trip.findById({ _id: tripId });
+    const allUserIds = trip.usersList;
+    for (const userId of allUserIds) {
+        const user = await User.findById({ _id: userId });
+        const index = user.tripsList.indexOf(tripId);
+        user.tripsList.splice(index, 1);
+        await User.updateOne({ _id: userId }, { tripsList: user.tripsList });
+    }
     const response = await Trip.deleteOne({ _id: tripId });
     if (response.deletedCount > 0) {
-        User.findOne({ token: token }).then(user => {
-            if (user) {
-                const index = user.tripsList.indexOf(tripId);
-                user.tripsList.splice(index, 1);
-                User.updateOne({ token: token }, { tripsList: user.tripsList }).then(updatedUser => {
-                    res.json({ result: true, user: updatedUser });
-                })
-            } else {
-                res.json({ result: false, error: "Invalid token" });
-            }
-        })
+        const user = await User.findOne({ token: token });
+        if (user) {
+            const index = user.tripsList.indexOf(tripId);
+            user.tripsList.splice(index, 1);
+            await User.updateOne({ token: token }, { tripsList: user.tripsList });
+        } else {
+            res.json({ result: false, error: "Invalid token" });
+        }
     } else {
         res.json({ result: false, error: "Failed to delete trip" });
     }
