@@ -22,6 +22,7 @@ router.post("/", async (req, res) => {
             (currentCity) => currentCity.name === city.name
           );
           if (actualCity !== undefined && actualCity !== null) {
+
           } else {
             const cityResponse = await fetch(
               `https://api.pexels.com/v1/search?query=${current.name}&per_page=1`,
@@ -127,6 +128,9 @@ router.post("/", async (req, res) => {
               },
             }
           );
+          const cityResponse = await fetch(`https://api.pexels.com/v1/search?query=${current.name}&per_page=1`, {
+            headers: { 'Authorization': 'UU1bXYdwOwbaZQAkPKmKlLTwS5nHwvbkKRhAPMbQdYdRpZYB0gjVKaUQ' }
+          });
           const cityImg = await cityResponse.json();
           const allTypes = [];
           for (const type of current.activTypes) {
@@ -173,6 +177,10 @@ router.post("/", async (req, res) => {
               cityImg: cityImg.photos[0].src.original,
               activitiesTypes: allTypes,
             };
+          if (cityImg.photos && cityImg.photos[0] && cityImg.photos[0].length !== 0) {
+            city = {
+              name: current.name, cityImg: cityImg.photos[0].src.original, activitiesTypes: allTypes
+            }
           } else {
             city = {
               name: current.name,
@@ -199,18 +207,159 @@ router.post("/", async (req, res) => {
   res.json({ result: true });
 });
 
+
+router.get("/Allcountries", async (req, res) => {
+  const countries = await Country.find().lean()
+  let activTypes = [];
+  let activities = [];
+  for (let i = 0; i < 50; i++) {
+    for (let j = 0; j < countries[i].cities.length; j++) {
+      for (let e = 0; e < countries[i].cities[j].activitiesTypes.length; e++) {
+
+        const exists = activTypes.some((element) => {
+
+          return element.value === countries[i].cities[j].activitiesTypes[e].name
+        });
+        if (exists === false) {
+          const activityTypes = {
+            value: countries[i].cities[j].activitiesTypes[e].name,
+            activities: []
+          }
+         
+          if (activityTypes.value !== 'Cultural') {
+            activTypes.push(activityTypes)
+          }
+        }
+
+
+        for (let index = 0; index < countries[i].cities[j].activitiesTypes[e].activities.length; index++) {
+
+          const existsActivity = activTypes.some((element) => element.activities.some(activity => activity.value === countries[i].cities[j].activitiesTypes[e].activities[index].name));
+          
+          if (!existsActivity) {
+            const activity = {
+              key: index,
+              value: countries[i].cities[j].activitiesTypes[e].activities[index].name
+            };
+
+            // Find the corresponding activityTypes object
+            const matchingActivityType = activTypes.find(type => type.value === countries[i].cities[j].activitiesTypes[e].name);
+
+            // Add the activity to the matching activityTypes object
+            if (matchingActivityType) {
+              matchingActivityType.activities.push(activity);
+            }
+          }
+        }
+
+      }
+    }
+  }
+  
+  res.json({ result: true, activTypes })
+
+});
+
+
+
+
 router.post("/cities", async (req, res) => {
-  Country.findOne({ country: req.body.country }).then((data) => {
-    console.log(data);
-    res.json({ result: true, cities: data.cities });
-  });
+  Country.findOne({ country: req.body.country })
+    .then(data => {
+      const countries = Country.find().lean()
+
+      res.json({ result: true, cities: data });
+    })
+
 });
 
 router.post("/city", async (req, res) => {
-  Country.findOne({ country: req.body.country }).then((data) => {
-    const city = data.cities.find((element) => element.name === req.body.city);
-    res.json({ result: true, city });
-  });
+  Country.findOne({ country: req.body.country })
+    .then(data => {
+
+      const city = data.cities.find((element) => element.name === req.body.city)
+      if (city) {
+        res.json({ result: true, city });
+      } else {
+        res.json({ result: false, err: 'city doesnt exists' });
+      }
+
+    })
+
 });
+
+router.post("/activitiesTypes", async (req, res) => {
+  try {
+
+    const countries = await Country.find({ "cities.activitiesTypes.name": req.body.activityType }).lean(true)
+
+    let foundCities = [];
+
+    for (let i = 0; i < countries.length; i++) {
+
+      for (let j = 0; j < countries[i].cities.length; j++) {
+
+        const city = countries[i].cities[j];
+
+        const foundActivity = city.activitiesTypes.some((activity) => activity.name === req.body.activityType)
+
+        if (foundActivity) {
+          const foundCity = {
+            country: countries[i].country,
+            city: city.name,
+            image: city.cityImg
+
+          }
+
+          foundCities.push(foundCity)
+        }
+      }
+    }
+    res.json({ result: true, foundCities });
+  } catch (error) {
+    console.error('Error:', error);
+    res.status(500).json({ result: false, error: 'Internal server error' });
+  }
+});
+
+
+
+router.post("/activity", async (req, res) => {
+  try {
+    const countries = await Country.find({ "cities.activitiesTypes.activities.name": req.body.activity }).lean(true)
+
+    let foundCities = [];
+
+    for (let i = 0; i < countries.length; i++) {
+      for (let j = 0; j < countries[i].cities.length; j++) {
+        const city = countries[i].cities[j];
+        const foundActivityType = city.activitiesTypes.filter((activityType) => {
+          return activityType.name === req.body.activityType
+        })
+        if (foundActivityType.length > 0) {
+          const foundActivity = foundActivityType[0].activities.filter((activity) => activity.name === req.body.activity)
+          if (foundActivity.length > 0) {
+            const foundCity = {
+              country: countries[i].country,
+              city: city.name,
+              image: city.cityImg,
+              activityApi: foundActivity[0].apiName
+            }
+           
+            foundCities.push(foundCity)
+          }
+        } else {
+          console.log('activ type not found')
+        }
+      }
+    }
+   
+    res.json({ result: true, foundCities });
+  } catch (error) {
+    console.error('Error:', error);
+    res.status(500).json({ result: false, error: 'Internal server error' });
+  }
+});
+
 
 module.exports = router;

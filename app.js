@@ -13,6 +13,8 @@ var tripsRouter = require('./routes/trips');
 var profileRouter = require('./routes/profile');
 var countriesRouter = require('./routes/countries');
 
+
+
 var app = express();
 
 const cors = require('cors');
@@ -29,6 +31,7 @@ app.use('/users', usersRouter);
 app.use('/profile', profileRouter);
 app.use('/trips', tripsRouter);
 app.use('/countries',countriesRouter)
+
 
 module.exports = app;
 
