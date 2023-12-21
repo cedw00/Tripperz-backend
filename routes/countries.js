@@ -211,7 +211,6 @@ router.post("/", async (req, res) => {
 router.get("/Allcountries", async (req, res) => {
   const countries = await Country.find().lean()
   let activTypes = [];
-  let activities = [];
   for (let i = 0; i < 50; i++) {
     for (let j = 0; j < countries[i].cities.length; j++) {
       for (let e = 0; e < countries[i].cities[j].activitiesTypes.length; e++) {
@@ -225,7 +224,7 @@ router.get("/Allcountries", async (req, res) => {
             value: countries[i].cities[j].activitiesTypes[e].name,
             activities: []
           }
-         
+
           if (activityTypes.value !== 'Cultural') {
             activTypes.push(activityTypes)
           }
@@ -235,7 +234,7 @@ router.get("/Allcountries", async (req, res) => {
         for (let index = 0; index < countries[i].cities[j].activitiesTypes[e].activities.length; index++) {
 
           const existsActivity = activTypes.some((element) => element.activities.some(activity => activity.value === countries[i].cities[j].activitiesTypes[e].activities[index].name));
-          
+
           if (!existsActivity) {
             const activity = {
               key: index,
@@ -255,8 +254,8 @@ router.get("/Allcountries", async (req, res) => {
       }
     }
   }
-  
-  res.json({ result: true, activTypes })
+
+  res.json({ result: true, activTypes, countries })
 
 });
 
@@ -266,18 +265,17 @@ router.get("/Allcountries", async (req, res) => {
 router.post("/cities", async (req, res) => {
   Country.findOne({ country: req.body.country })
     .then(data => {
-      const countries = Country.find().lean()
-
       res.json({ result: true, cities: data });
     })
 
 });
 
 router.post("/city", async (req, res) => {
-  Country.findOne({ country: req.body.country })
+Country.findOne({ country: req.body.country })
     .then(data => {
-
-      const city = data.cities.find((element) => element.name === req.body.city)
+      console.log('data',data)
+     const cities =data.cities
+      const city = cities.find((element) => element.name === req.body.city)
       if (city) {
         res.json({ result: true, city });
       } else {
@@ -317,8 +315,8 @@ router.post("/activitiesTypes", async (req, res) => {
     }
     res.json({ result: true, foundCities });
   } catch (error) {
-    console.error('Error:', error);
-    res.status(500).json({ result: false, error: 'Internal server error' });
+
+    res.status(500).json({ result: false, error });
   }
 });
 
@@ -345,7 +343,7 @@ router.post("/activity", async (req, res) => {
               image: city.cityImg,
               activityApi: foundActivity[0].apiName
             }
-           
+
             foundCities.push(foundCity)
           }
         } else {
@@ -353,11 +351,10 @@ router.post("/activity", async (req, res) => {
         }
       }
     }
-   
+
     res.json({ result: true, foundCities });
   } catch (error) {
-    console.error('Error:', error);
-    res.status(500).json({ result: false, error: 'Internal server error' });
+    res.status(500).json({ result: false, error });
   }
 });
 
