@@ -13,8 +13,10 @@ router.post('/register', async (req, res) => {
   }
 
   const { username, email, phone } = req.body;
+  // Check if email is not already used by another user
   const data = await User.findOne({ email: { $regex: new RegExp(email, 'i') } });
   if (data === null) {
+    // Hash password before sending to database
     const hash = bcrypt.hashSync(req.body.password, 10);
 
     const newUser = new User({
@@ -47,7 +49,9 @@ router.post('/signin', async (req, res) => {
   }
 
   const { email, password } = req.body;
+  // Check email and return corresponding user
   const data = await User.findOne({ email: { $regex: new RegExp(email, 'i') } })
+  // Compare password and hashed password in database
   if (data && bcrypt.compareSync(password, data.password)) {
     res.json({ result: true, user: data});
   } else {
