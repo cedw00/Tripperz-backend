@@ -151,25 +151,6 @@ router.put("/update", async (req, res) => {
   }
 });
 
-// router.put("/update", async (req, res) => {
-//     try {
-//       const { _id, activitiesList, allSizes } = req.body;
-  
-//       // Vérifie si le voyage existe
-//       const trip = await Trip.findById(id);
-//       if (!trip) {
-//         return res.json({ result: false, error: "Trip doesn't exist" });
-//       }
-  
-//       // Met à jour les champs activitiesList et allSizes du voyage trouvé
-//       const updatedTrip = await Trip.findOneAndUpdate(_id, { activitiesList, allSizes }, { new: true });
-  
-//       res.json({ result: true, data: updatedTrip });
-//     } catch (error) {
-//       res.status(500).json({ result: false, error: error.message });
-//     }
-//   });
-
 router.delete("/:tripId/:token", async (req, res) => {
   const { tripId, token } = req.params;
   const response = await Trip.deleteOne({ _id: tripId });
