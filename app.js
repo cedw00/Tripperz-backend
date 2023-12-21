@@ -12,7 +12,6 @@ var usersRouter = require('./routes/users');
 var tripsRouter = require('./routes/trips');
 var profileRouter = require('./routes/profile');
 var countriesRouter = require('./routes/countries');
-var planningRouter = require('./routes/planning')
 var placesRouter = require('./routes/places');
 
 var app = express();
@@ -31,7 +30,6 @@ app.use('/users', usersRouter);
 app.use('/profile', profileRouter);
 app.use('/trips', tripsRouter);
 app.use('/countries',countriesRouter)
-app.use('/planning', planningRouter);
 app.use('/places', placesRouter);
 
 module.exports = app;
