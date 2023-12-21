@@ -13,8 +13,10 @@ router.post('/register', async (req, res) => {
   }
 
   const { username, email, phone } = req.body;
+  // Check if email is not already used by another user
   const data = await User.findOne({ email: { $regex: new RegExp(email, 'i') } });
   if (data === null) {
+    // Hash password before sending to database
     const hash = bcrypt.hashSync(req.body.password, 10);
 
     const newUser = new User({
@@ -47,7 +49,9 @@ router.post('/signin', async (req, res) => {
   }
 
   const { email, password } = req.body;
+  // Check email and return corresponding user
   const data = await User.findOne({ email: { $regex: new RegExp(email, 'i') } })
+  // Compare password and hashed password in database
   if (data && bcrypt.compareSync(password, data.password)) {
     res.json({ result: true, user: data});
   } else {
@@ -61,6 +65,20 @@ router.get('/', async (req, res) => {
     res.json({ result: true, users: allUsers });
   } else {
     res.json({ result: false, error: 'No users saved in database' });
+  }
+});
+
+router.get('/findUser/:email', async (req, res) => {
+  let { email } = req.params;
+
+  email = email.toLowerCase();
+ 
+  const foundUser = await User.findOne({ email: { $regex: new RegExp('^' + email + '$', 'i') } });
+
+  if (foundUser) {
+    res.json({ result: true, email: foundUser });
+  } else {
+    res.json({ result: false, error: 'Oops! This person is not registered on Tripperz yet.' });
   }
 });
 

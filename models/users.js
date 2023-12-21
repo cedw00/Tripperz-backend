@@ -9,6 +9,7 @@ const userSchema = mongoose.Schema({
   gender: String,
   favoriteFoods: [String],
   favoriteDestinations: [String],
+  favoriteTypes: [String],
   hobbies: [String],
   tripsList: [{ type: mongoose.Schema.Types.ObjectId, ref: 'trips' }],
   password: String,
