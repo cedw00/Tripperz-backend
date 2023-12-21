@@ -10,8 +10,8 @@ router.put('/update', async (req, res) => {
         return;
     }
 
-    if ((req.body.favFood.length < 1 || req.body.hobbies.length < 1 || req.body.favDest.length < 1)) {
-        res.json({ result: false, error: 'At least one type of food and hobbies is required' });
+    if ((req.body.favFood.length < 1 || req.body.hobbies.length < 3 || req.body.favDest.length < 1)) {
+        res.json({ result: false, error: 'At least one type of favorite food and five hobbies are required' });
         return;
     }
     
