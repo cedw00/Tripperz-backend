@@ -64,4 +64,18 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.get('/findUser/:email', async (req, res) => {
+  let { email } = req.params;
+
+  email = email.toLowerCase();
+ 
+  const foundUser = await User.findOne({ email: { $regex: new RegExp('^' + email + '$', 'i') } });
+
+  if (foundUser) {
+    res.json({ result: true, email: foundUser });
+  } else {
+    res.json({ result: false, error: 'Oops! This person is not registered on Tripperz yet.' });
+  }
+});
+
 module.exports = router;
