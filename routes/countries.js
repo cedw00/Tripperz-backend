@@ -18,7 +18,7 @@ router.post('/', async (req, res) => {
           const current = city;
           const actualCity = countryData.cities.find(currentCity => currentCity.name === city.name);
           if (actualCity !== undefined && actualCity !== null) {
-            
+
           } else {
             const cityResponse = await fetch(`https://api.pexels.com/v1/search?query=${current.name}&per_page=1`, {
               headers: { 'Authorization': 'UU1bXYdwOwbaZQAkPKmKlLTwS5nHwvbkKRhAPMbQdYdRpZYB0gjVKaUQ' }
@@ -73,8 +73,8 @@ router.post('/', async (req, res) => {
         for (const actualCity of citiesActivities[i].cities) {
           const current = actualCity;
           const cityResponse = await fetch(`https://api.pexels.com/v1/search?query=${current.name}&per_page=1`, {
-              headers: { 'Authorization': 'UU1bXYdwOwbaZQAkPKmKlLTwS5nHwvbkKRhAPMbQdYdRpZYB0gjVKaUQ' }
-            });
+            headers: { 'Authorization': 'UU1bXYdwOwbaZQAkPKmKlLTwS5nHwvbkKRhAPMbQdYdRpZYB0gjVKaUQ' }
+          });
           const cityImg = await cityResponse.json();
           const allTypes = [];
           for (const type of current.activTypes) {
@@ -98,7 +98,8 @@ router.post('/', async (req, res) => {
           }
           let city = {};
           if (cityImg.photos && cityImg.photos[0] && cityImg.photos[0].length !== 0) {
-            city = { name: current.name, cityImg: cityImg.photos[0].src.original, activitiesTypes: allTypes
+            city = {
+              name: current.name, cityImg: cityImg.photos[0].src.original, activitiesTypes: allTypes
             }
           } else {
             city = {
@@ -115,14 +116,14 @@ router.post('/', async (req, res) => {
           cities: cities,
         });
 
-      await newCountry.save();
+        await newCountry.save();
       }
     }
   } catch {
     res.status(500).json({ result: false, error: 'Internal Server Error' });
     return
   }
-    res.json({ result: true });
+  res.json({ result: true });
 });
 
 
@@ -132,39 +133,51 @@ router.get("/Allcountries", async (req, res) => {
   const countries = await Country.find().lean()
   let activTypes = [];
   let activities = [];
-  for (let i = 0; i < 1; i++) {
+  for (let i = 0; i < 50; i++) {
     for (let j = 0; j < countries[i].cities.length; j++) {
-
       for (let e = 0; e < countries[i].cities[j].activitiesTypes.length; e++) {
 
-        const exists = activTypes.find((element) => element.name === countries[i].cities[j].activitiesTypes[e].name);
+        const exists = activTypes.some((element) => {
 
-        if (!exists) {
+          return element.value === countries[i].cities[j].activitiesTypes[e].name
+        });
+        if (exists === false) {
           const activityTypes = {
-            key: e,
-            value: countries[i].cities[j].activitiesTypes[e].name
-
+            value: countries[i].cities[j].activitiesTypes[e].name,
+            activities: []
           }
-          activTypes.push(activityTypes)
+         
+          if (activityTypes.value !== 'Cultural') {
+            activTypes.push(activityTypes)
+          }
+        }
 
-          for (let index = 0; index < countries[i].cities[j].activitiesTypes[e].activities.length; index++) {
-            const exists = activities.some((element) => element.name === countries[i].cities[j].activitiesTypes[e].activities[index].name)
-            if (!exists) {
-              const activity = {
-                key: index,
-                Type: countries[i].cities[j].activitiesTypes[e].name,
-                value: countries[i].cities[j].activitiesTypes[e].activities[index].name
 
-              }
-              activities.push(activity)
+        for (let index = 0; index < countries[i].cities[j].activitiesTypes[e].activities.length; index++) {
+
+          const existsActivity = activTypes.some((element) => element.activities.some(activity => activity.value === countries[i].cities[j].activitiesTypes[e].activities[index].name));
+          
+          if (!existsActivity) {
+            const activity = {
+              key: index,
+              value: countries[i].cities[j].activitiesTypes[e].activities[index].name
+            };
+
+            // Find the corresponding activityTypes object
+            const matchingActivityType = activTypes.find(type => type.value === countries[i].cities[j].activitiesTypes[e].name);
+
+            // Add the activity to the matching activityTypes object
+            if (matchingActivityType) {
+              matchingActivityType.activities.push(activity);
             }
           }
         }
+
       }
     }
   }
-
-  res.json({ result: true, activTypes, activities })
+  
+  res.json({ result: true, activTypes })
 
 });
 
@@ -214,14 +227,15 @@ router.post("/activitiesTypes", async (req, res) => {
         if (foundActivity) {
           const foundCity = {
             country: countries[i].country,
-            city: city.name
+            city: city.name,
+            image: city.cityImg
+
           }
 
           foundCities.push(foundCity)
         }
       }
     }
-    console.log('found cities', foundCities)
     res.json({ result: true, foundCities });
   } catch (error) {
     console.error('Error:', error);
@@ -237,33 +251,30 @@ router.post("/activity", async (req, res) => {
 
     let foundCities = [];
 
-    for (let i = 0; i < 1; i++) {
-
-      for (let j = 0; j < 1; j++) {
-
+    for (let i = 0; i < countries.length; i++) {
+      for (let j = 0; j < countries[i].cities.length; j++) {
         const city = countries[i].cities[j];
-
         const foundActivityType = city.activitiesTypes.filter((activityType) => {
-          return activityType.name === req.body.activityType})
-        console.log('found act type',foundActivityType)
-             if (foundActivityType) {
-              const foundActivity = foundActivityType[0].activities.filter((activity) => activity.name === req.body.activity )
-              if (foundActivity){
-                console.log('found activ',foundActivity)
-                const foundCity = {
-                        country: countries[i].country,
-                        city: city.name,
-                        activityApi: foundActivity[0].apiName
-                      }
-                      foundCities.push(foundCity)
-              }
-            
-
-      
+          return activityType.name === req.body.activityType
+        })
+        if (foundActivityType.length > 0) {
+          const foundActivity = foundActivityType[0].activities.filter((activity) => activity.name === req.body.activity)
+          if (foundActivity.length > 0) {
+            const foundCity = {
+              country: countries[i].country,
+              city: city.name,
+              image: city.cityImg,
+              activityApi: foundActivity[0].apiName
+            }
+           
+            foundCities.push(foundCity)
+          }
+        } else {
+          console.log('activ type not found')
         }
       }
     }
-    console.log('found cities', foundCities)
+   
     res.json({ result: true, foundCities });
   } catch (error) {
     console.error('Error:', error);
