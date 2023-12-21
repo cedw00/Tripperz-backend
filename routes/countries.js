@@ -247,7 +247,7 @@ router.post("/cities", async (req, res) => {
 });
 
 router.post("/city", async (req, res) => {
-  Country.findOne({ country: req.body.country })
+Country.findOne({ country: req.body.country })
     .then(data => {
       const city = data.cities.find((element) => element.name === req.body.city)
       if (city) {
@@ -304,7 +304,7 @@ router.post("/activity", async (req, res) => {
               image: city.cityImg,
               activityApi: foundActivity[0].apiName
             }
-           
+
             foundCities.push(foundCity)
           }
         } else {
@@ -312,7 +312,7 @@ router.post("/activity", async (req, res) => {
         }
       }
     }
-   
+
     res.json({ result: true, foundCities });
   } catch (error) {
     res.status(500).json({ result: false, error: error });
