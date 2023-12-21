@@ -125,31 +125,36 @@ router.post('/', async (req, res) => {
     res.json({ result: true });
 });
 
+
+
+
 router.get("/Allcountries", async (req, res) => {
   const countries = await Country.find().lean()
   let activTypes = [];
   let activities = [];
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < 1; i++) {
     for (let j = 0; j < countries[i].cities.length; j++) {
-      console.log('country', countries[i]);
-      console.log('cities', countries[i].cities[j])
+
       for (let e = 0; e < countries[i].cities[j].activitiesTypes.length; e++) {
-        console.log('activity type', countries[i].cities[j].activitiesTypes[e].type)
-        const exists = activTypes.find((element) => element.type === countries[i].cities[j].activitiesTypes[e].type);
-        console.log('exists', !exists)
+
+        const exists = activTypes.find((element) => element.name === countries[i].cities[j].activitiesTypes[e].name);
+
         if (!exists) {
           const activityTypes = {
-            type: countries[i].cities[j].activitiesTypes[e].type,
-            key: e
+            key: e,
+            value: countries[i].cities[j].activitiesTypes[e].name
+
           }
           activTypes.push(activityTypes)
-          console.log('activity tipes array', activTypes)
-          for (let index = 0; index < countries[i].cities[j].activitiesTypes[e].activity.length; index++) {
-            const exists = activities.some((element) => element.name === countries[i].cities[j].activitiesTypes[e].activity[index].name)
+
+          for (let index = 0; index < countries[i].cities[j].activitiesTypes[e].activities.length; index++) {
+            const exists = activities.some((element) => element.name === countries[i].cities[j].activitiesTypes[e].activities[index].name)
             if (!exists) {
               const activity = {
-                name: countries[i].cities[j].activitiesTypes[e].activity[index].name,
-                key: index
+                key: index,
+                Type: countries[i].cities[j].activitiesTypes[e].name,
+                value: countries[i].cities[j].activitiesTypes[e].activities[index].name
+
               }
               activities.push(activity)
             }
@@ -158,14 +163,22 @@ router.get("/Allcountries", async (req, res) => {
       }
     }
   }
-  res.json({ result: true, activTypes, activities });
+
+  res.json({ result: true, activTypes, activities })
+
 });
+
+
+
 
 router.post("/cities", async (req, res) => {
   Country.findOne({ country: req.body.country })
     .then(data => {
-      res.json({ result: true, cities: data.cities });
-    });
+      const countries = Country.find().lean()
+
+      res.json({ result: true, cities: data });
+    })
+
 });
 
 router.post("/city", async (req, res) => {
@@ -179,7 +192,85 @@ router.post("/city", async (req, res) => {
         res.json({ result: false, err: 'city doesnt exists' });
       }
 
-    });
+    })
+
 });
+
+router.post("/activitiesTypes", async (req, res) => {
+  try {
+
+    const countries = await Country.find({ "cities.activitiesTypes.name": req.body.activityType }).lean(true)
+
+    let foundCities = [];
+
+    for (let i = 0; i < countries.length; i++) {
+
+      for (let j = 0; j < countries[i].cities.length; j++) {
+
+        const city = countries[i].cities[j];
+
+        const foundActivity = city.activitiesTypes.some((activity) => activity.name === req.body.activityType)
+
+        if (foundActivity) {
+          const foundCity = {
+            country: countries[i].country,
+            city: city.name
+          }
+
+          foundCities.push(foundCity)
+        }
+      }
+    }
+    console.log('found cities', foundCities)
+    res.json({ result: true, foundCities });
+  } catch (error) {
+    console.error('Error:', error);
+    res.status(500).json({ result: false, error: 'Internal server error' });
+  }
+});
+
+
+
+router.post("/activity", async (req, res) => {
+  try {
+    const countries = await Country.find({ "cities.activitiesTypes.activities.name": req.body.activity }).lean(true)
+
+    let foundCities = [];
+
+    for (let i = 0; i < 1; i++) {
+
+      for (let j = 0; j < 1; j++) {
+
+        const city = countries[i].cities[j];
+
+        const foundActivityType = city.activitiesTypes.filter((activityType) => {
+          return activityType.name === req.body.activityType})
+        console.log('found act type',foundActivityType)
+             if (foundActivityType) {
+              const foundActivity = foundActivityType[0].activities.filter((activity) => activity.name === req.body.activity )
+              if (foundActivity){
+                console.log('found activ',foundActivity)
+                const foundCity = {
+                        country: countries[i].country,
+                        city: city.name,
+                        activityApi: foundActivity[0].apiName
+                      }
+                      foundCities.push(foundCity)
+              }
+            
+
+      
+        }
+      }
+    }
+    console.log('found cities', foundCities)
+    res.json({ result: true, foundCities });
+  } catch (error) {
+    console.error('Error:', error);
+    res.status(500).json({ result: false, error: 'Internal server error' });
+  }
+});
+
+
 
 module.exports = router;
