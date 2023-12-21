@@ -1,18 +1,15 @@
 const mongoose = require('mongoose');
 
-const activitySchema = mongoose.Schema({
-    name: String,
-    type: String,
-    address: String
-});
-
 const tripSchema = mongoose.Schema({
  startDate: String,
  endDate: String,
+ duration: Number,
+ dayDuration: [],
  countryDest: String,
  cityDest: String,
  tripImage: String,
- activitiesList: [activitySchema],
+ activitiesList: [],
+ allSizes: [],
  usersList: [{ type: mongoose.Schema.Types.ObjectId, ref: 'users' }],
 });
 
