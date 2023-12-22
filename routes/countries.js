@@ -235,7 +235,7 @@ router.get("/Allcountries", async (req, res) => {
       }
     }
   }
-  res.json({ result: true, activTypes })
+  res.json({ result: true, activTypes, countries })
 });
 
 router.post("/cities", async (req, res) => {
