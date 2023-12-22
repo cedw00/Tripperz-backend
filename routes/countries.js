@@ -21,7 +21,6 @@ router.post("/", async (req, res) => {
             (currentCity) => currentCity.name === city.name
           );
           if (actualCity !== undefined && actualCity !== null) {
-
           } else {
             const cityResponse = await fetch(
               `https://api.pexels.com/v1/search?query=${current.name}&per_page=1`,
@@ -246,10 +245,12 @@ router.post("/cities", async (req, res) => {
     })
 });
 
+
 router.post("/city", async (req, res) => {
-Country.findOne({ country: req.body.country })
+  Country.findOne({ country: req.body.country })
     .then(data => {
-      const city = data.cities.find((element) => element.name === req.body.city)
+      const cities = data.cities
+      const city = cities.find((element) => element.name === req.body.city)
       if (city) {
         res.json({ result: true, city });
       } else {
@@ -257,6 +258,7 @@ Country.findOne({ country: req.body.country })
       }
     })
 });
+
 
 router.post("/activitiesTypes", async (req, res) => {
   try {
@@ -278,7 +280,7 @@ router.post("/activitiesTypes", async (req, res) => {
     }
     res.json({ result: true, foundCities });
   } catch (error) {
-    res.status(500).json({ result: false, error: error });
+    res.status(500).json({ result: false, error });
   }
 });
 
@@ -286,9 +288,7 @@ router.post("/activitiesTypes", async (req, res) => {
 router.post("/activity", async (req, res) => {
   try {
     const countries = await Country.find({ "cities.activitiesTypes.activities.name": req.body.activity }).lean(true)
-
     let foundCities = [];
-
     for (let i = 0; i < countries.length; i++) {
       for (let j = 0; j < countries[i].cities.length; j++) {
         const city = countries[i].cities[j];
@@ -300,11 +300,10 @@ router.post("/activity", async (req, res) => {
           if (foundActivity.length > 0) {
             const foundCity = {
               country: countries[i].country,
-              city: city.name,
+              name: city.name,
               image: city.cityImg,
               activityApi: foundActivity[0].apiName
             }
-
             foundCities.push(foundCity)
           }
         } else {
@@ -312,7 +311,6 @@ router.post("/activity", async (req, res) => {
         }
       }
     }
-
     res.json({ result: true, foundCities });
   } catch (error) {
     res.status(500).json({ result: false, error: error });
