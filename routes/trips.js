@@ -38,12 +38,12 @@ router.get("/tripId/:_id", async (req, res) => {
       });
 
 router.post("/", async (req, res) => {
-  if (
-    !checkBody(req.body, ["start", "end", "duration", "dayDuration", "countryDest", "cityDest", "img"])
-  ) {
-    res.json({ result: false, error: "Missing or empty fields" });
-    return;
-  }
+//   if (
+//     !checkBody(req.body, ["start", "end", "duration", "dayDuration", "countryDest", "cityDest", "img"])
+//   ) {
+//     res.json({ result: false, error: "Missing or empty fields" });
+//     return;
+//   }
 
   const { token, start, end, duration, dayDuration, countryDest, cityDest, img, activitiesList, allSizes, tripperz } =
     req.body;
