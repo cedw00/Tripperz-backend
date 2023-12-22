@@ -300,7 +300,7 @@ router.post("/activity", async (req, res) => {
           if (foundActivity.length > 0) {
             const foundCity = {
               country: countries[i].country,
-              city: city.name,
+              name: city.name,
               image: city.cityImg,
               activityApi: foundActivity[0].apiName
             }
