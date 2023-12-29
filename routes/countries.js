@@ -198,26 +198,42 @@ router.post("/", async (req, res) => {
 });
 
 
+
+// Get all activity types and activities that will be displayed in the type and activities lists)
+// check : components/HomePage/Activities/SelectList
+
 router.get("/Allcountries", async (req, res) => {
+  // Fetch all countries from the database
   const countries = await Country.find().lean()
+  // Initialize an array to store unique activity types
   let activTypes = [];
+   // Loop through each country
   for (let i = 0; i < countries.length; i++) {
+    // Loop through each city in the country
     for (let j = 0; j < countries[i].cities.length; j++) {
+            // Loop through each activity type in the city
       for (let e = 0; e < countries[i].cities[j].activitiesTypes.length; e++) {
+        // Check if the activity type already exists in activTypes
         const exists = activTypes.some((element) => {
           return element.value === countries[i].cities[j].activitiesTypes[e].name
         });
+        // If the activity type doesn't exist, add it to activTypes
         if (exists === false) {
           const activityTypes = {
             value: countries[i].cities[j].activitiesTypes[e].name,
             activities: []
           }
+           // Exclude 'Cultural' activity type
           if (activityTypes.value !== 'Cultural') {
             activTypes.push(activityTypes)
           }
         }
+         // Loop through each activity in the activity type
         for (let index = 0; index < countries[i].cities[j].activitiesTypes[e].activities.length; index++) {
+
+          // Check if the activity already exists in any activity type in activTypes
           const existsActivity = activTypes.some((element) => element.activities.some(activity => activity.value === countries[i].cities[j].activitiesTypes[e].activities[index].name));
+          // If the activity doesn't exist, add it to the corresponding activity type in activTypes
           if (!existsActivity) {
             const activity = {
               key: index,
@@ -237,6 +253,9 @@ router.get("/Allcountries", async (req, res) => {
   res.json({ result: true, activTypes, countries })
 });
 
+
+
+// Get cities for a specific country
 router.post("/cities", async (req, res) => {
   Country.findOne({ country: req.body.country })
     .then(data => {
@@ -246,6 +265,7 @@ router.post("/cities", async (req, res) => {
 });
 
 
+// Get information(city name, country and img) about a specific city
 router.post("/city", async (req, res) => {
   Country.findOne({ country: req.body.country })
     .then(data => {
@@ -260,6 +280,7 @@ router.post("/city", async (req, res) => {
 });
 
 
+// Get cities that have a specific activity type
 router.post("/activitiesTypes", async (req, res) => {
   try {
     const countries = await Country.find({ "cities.activitiesTypes.name": req.body.activityType }).lean(true)
@@ -284,7 +305,7 @@ router.post("/activitiesTypes", async (req, res) => {
   }
 });
 
-
+// Get cities that have a specific activity
 router.post("/activity", async (req, res) => {
   try {
     const countries = await Country.find({ "cities.activitiesTypes.activities.name": req.body.activity }).lean(true)
